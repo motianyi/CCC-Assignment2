@@ -35,6 +35,8 @@ instance_image: f8b79936-6616-4a22-b55d-0d0a1d27bceb
 instance_key_name: demo
 instance_flavor: uom.mse.1c4g
 
+# inventory file save path
+inventory_file: "./inventory/inventory_file.ini"
 
 #ansible
 ansiple_python_interpreter: /usr/bin/python3
