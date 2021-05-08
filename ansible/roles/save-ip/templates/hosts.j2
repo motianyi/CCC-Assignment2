@@ -1,0 +1,7 @@
+{% for group_name in groups %}
+{% if group_name == 'all' %}
+{% for ip in groups[group_name] %}
+{{ ip }}
+{% endfor %}
+{% endif %}
+{% endfor %}

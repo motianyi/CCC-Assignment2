@@ -1,3 +1,3 @@
 #!/bin/bash
-
-. ./unimelb-comp90024-2021-grp-31-openrc.sh; ansible-playbook --ask_become_pass create-instances.yaml
+chmod 755 ./inventory
+. ./unimelb-comp90024-2021-grp-31-openrc.sh; ansible-playbook create-instances.yaml
