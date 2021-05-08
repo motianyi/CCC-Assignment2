@@ -1,0 +1,32 @@
+---
+# set up docker http proxy following the instruction at:
+#  https://docs.docker.com/config/daemon/systemd/#httphttps-proxy
+
+- name: create a systemd drop-in directory for the docker service
+  become: yes
+  shell: mkdir -p /etc/systemd/system/docker.service.d 
+
+# - name: create file for docker proxy environment variable
+- name: create 
+  become: yes
+  shell: touch /etc/systemd/system/docker.service.d/http-proxy.conf
+
+- name: add proxy to file 
+  become: yes
+  blockinfile:
+    path: /etc/systemd/system/docker.service.d/http-proxy.conf
+    block: |
+        [Service]
+        Environment="HTTP_PROXY=http://wwwproxy.unimelb.edu.au:8000/"
+        Environment="HTTPS_PROXY=http://wwwproxy.unimelb.edu.au:8000/"
+        Environment="http_proxy=http://wwwproxy.unimelb.edu.au:8000/"
+        Environment="https_proxy=http://wwwproxy.unimelb.edu.au:8000/"
+        Environment="no_proxy=localhost,127.0.0.1,localaddress,172.16.0.0/12,.melbourne.rc.nectar.org.au,.storage.unimelb.edu.au,.cloud.unimelb.edu.au"
+
+- name: Flush changes 
+  become: yes
+  shell: systemctl daemon-reload
+
+- name: Restart Docker
+  become: yes
+  shell: systemctl restart docker
