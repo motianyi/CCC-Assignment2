@@ -6,7 +6,7 @@
     name: "couchdb"
     image: "{{ couchdb_image_version }}"
     ports:
-      - "5894:5894"
+      - "5984:5984"
       - "9100:9100"
       - "4369:4369"
     env:
