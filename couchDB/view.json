@@ -1,0 +1,8 @@
+{
+    "views": {
+        "count": {
+            "map": "function(doc) { emit([doc.data.text], 1); }",
+            "reduce": "_count"
+        }
+    }
+}
