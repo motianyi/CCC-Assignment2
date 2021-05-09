@@ -1,0 +1,16 @@
+
+---
+- name: Start Couchdb container
+  become: yes
+  docker_container:
+    name: "couchdb"
+    image: "{{ couchdb_image_version }}"
+    ports:
+      - "5984:5984"
+      - "9100:9100"
+      - "4369:4369"
+    env:
+      COUCHDB_PASSWORD: "{{ couchdb_password }}"
+      COUCHDB_USER: "{{ couchdb_user}}"
+      NODENAME: "{{ ansible_host }}"
+      COUCHDB_SECRET: "{{ couchdb_cookie }}"
