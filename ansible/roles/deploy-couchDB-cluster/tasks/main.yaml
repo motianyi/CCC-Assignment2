@@ -1,0 +1,31 @@
+
+---
+
+- name: couchdb cluster
+  become: yes
+  uri:
+    url: "http://{{groups['instances'][0]}}:5984/_cluster_setup"
+    user: "{{ couchdb_user }}"
+    password: "{{ couchdb_password }}"
+    method: POST
+    body_format: json
+    body: |
+          "{\"action\": \"enable_cluster\", \"bind_address\":\"0.0.0.0\",\
+          \"username\": \{{ couchdb_user }}\", \"password\":\"{{couchdb_password}}\", \"port\": \"5984\",\
+          \"remote_node\": \"{{ item }}\", \"node_count\": \"{{groups['instances'] | length -1}}\",\
+          \"remote_current_user\":\"{{ couchdb_user }}\", \"remote_current_password\":\"{{couchdb_password}}\"}"
+    status_code: 200
+  loop: "{{ groups['instances'] }}"
+  when: item != '172.26.128.223'
+  
+  
+  # |
+  #         for node in ${othernodes} 
+  #         do
+  #             curl -XPOST "http://${user}:${pass}@${masternode}:5984/_cluster_setup" \
+  #               --header "Content-Type: application/json"\
+  #               --data "{\"action\": \"enable_cluster\", \"bind_address\":\"0.0.0.0\",\
+  #                     \"username\": \"${user}\", \"password\":\"${pass}\", \"port\": \"5984\",\
+  #                     \"remote_node\": \"${node}\", \"node_count\": \"$(echo ${nodes[@]} | wc -w)\",\
+  #                     \"remote_current_user\":\"${user}\", \"remote_current_password\":\"${pass}\"}"
+  #         done
