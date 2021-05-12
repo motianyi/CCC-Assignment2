@@ -9,7 +9,7 @@
     # - role: openstack-common
     # - role: deploy-couchDB
 
-- hosts: 172.26.133.138
+- hosts: 172.26.128.223
   vars_files:
     - host_vars/mrc.yaml
   roles:
