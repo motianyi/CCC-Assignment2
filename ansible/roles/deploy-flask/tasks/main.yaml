@@ -1,0 +1,4 @@
+- name: Start the backend flask server
+  shell: docker-compose up
+  args:
+    chdir: /home/ubuntu/COMP90024/comp90024-project2/backend

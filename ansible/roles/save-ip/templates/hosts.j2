@@ -1,5 +1,5 @@
 {% for group_name in groups %}
-{% if group_name == 'all' %}
+{% if group_name == 'instances' %}
 [{{group_name}}]
 {% for ip in groups[group_name] %}
 {{ ip }}
