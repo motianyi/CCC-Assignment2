@@ -1,0 +1,36 @@
+- name: Log into DockerHub
+  become: yes
+  docker_login:
+    username: "{{ harvester_dockerhub_username }}"
+    password: "{{ harvester_dockerhub_password }}"
+
+- name: pull image
+  become: yes
+  shell: docker pull "{{ harvester_image }}"
+
+- name: Stop a container
+  become: yes
+  docker_container:
+    name: "{{ harvester_name }}"
+    state: stopped
+
+- name: recreate container
+  become: yes
+  docker_container:
+    name: "{{ harvester_name }}"
+    image: "{{ harvester_image }}"
+    state: present
+    recreate: yes
+
+- name: Restart container
+  become: yes
+  docker_container:
+    name: "{{ harvester_name }}"
+    image: "{{ harvester_image }}"
+    state: started
+    restart: yes
+
+- name: Log out from DockerHub
+  become: yes
+  docker_login:
+    state: absent
