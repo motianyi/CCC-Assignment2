@@ -1,0 +1,247 @@
+{
+  "organisation": "AU_Govt_ABS_Census",
+  "name": "lga_b01_census_1996",
+  "title": "LGA-B01 Selected Person Characteristics-Census 1996",
+  "legal": {
+    "attribution": "{datasource.organisationTitle}, ({dataset.attributionYear}): {dataset.title}; accessed from AURIN on {dateOfAccess}.",
+    "attributionYear": "2000",
+    "clickthrough": false,
+    "copyrightNotice": "&copy; {datasource.organisationTitle} {dataset.copyrightYear}",
+    "copyrightYear": "2000",
+    "licenceType": "Creative Commons Attribution 2.5 Australia (CC BY 2.5 AU)"
+  },
+  "referenceSystemIdentifier": "urn:x-ogc:def:crs:EPSG:4283",
+  "geoLevel": "NA",
+  "key": "lga_code",
+  "keyRegex": null,
+  "availability": "true",
+  "geomField": "wkb_geometry",
+  "keyword": "bcp,census,b01,select characteristics,person characteristics,basic community profile,1996",
+  "theme": null,
+  "temporalExtent": {
+    "beginDate": "1996-08-06T00:00:00",
+    "endDate": "1996-08-06T00:00:00",
+    "selectTime": false
+  },
+  "type": "dataset",
+  "_id": "dataset-AU_Govt_ABS_Census-lga_b01_census_1996-NA",
+  "bbox": [96.82, -43.74, 159.11, -9.14],
+  "abstract": "LGA based data for Selected Characteristics, in Basic Community Profile, 1996 Census. Count of all persons. The dataset includes the following characteristics: people aged 15 years and over, Aboriginal and/or Torres strait Islander status, birthplace, language spoken at home, Australian citizenship, employment status, enumerated in a private or other dwelling, and enumerated in the same address as previous census. The data is by LGA 1996 boundaries. Periodicity: 5-Yearly. <br/>\nThis data is ABS data (geographic boundary cat. no. 1261.0.30.001 & census dictionary cat. no. 2901.0) used with permission from the Australian Bureau of Statistics. <br/>\nFor more information visit  <a href=\"http://www.abs.gov.au/websitedbs/censushome.nsf/home/historicaldata1996?opendocument&navpos=280\" target='_blank'>the ABS </a>.\n",
+  "selectedAttributes": [
+    {
+      "name": "lga_code",
+      "type": "Integer",
+      "title": "LGA Code 1996",
+      "description": "LGA Code 1996.",
+      "stype": "nominal",
+      "isDimension": false
+    },
+    {
+      "name": "unemployment_rate_m",
+      "type": "Double",
+      "title": "Male Unemployment Rate",
+      "description": "Male Unemployment Rate.",
+      "stype": "ratio",
+      "isDimension": false
+    },
+    {
+      "name": "unemployment_rate_f",
+      "type": "Double",
+      "title": "Female Unemployment Rate",
+      "description": "Female Unemployment Rate.",
+      "stype": "ratio",
+      "isDimension": false
+    },
+    {
+      "name": "total_persons",
+      "type": "Integer",
+      "title": "Persons total",
+      "description": "Persons total.",
+      "stype": "ratio",
+      "isDimension": false
+    },
+    {
+      "name": "australian_born_female",
+      "type": "Integer",
+      "title": "Females Born in Australia ",
+      "description": "Females Born in Australia.",
+      "stype": "ratio",
+      "isDimension": false
+    },
+    {
+      "name": "australian_born_male",
+      "type": "Integer",
+      "title": "Males Born in Australia",
+      "description": "Males Born in Australia.",
+      "stype": "ratio",
+      "isDimension": false
+    },
+    {
+      "name": "australian_born_persons",
+      "type": "Integer",
+      "title": "Persons Born in Australia ",
+      "description": "Persons Born in Australia.",
+      "stype": "ratio",
+      "isDimension": false
+    },
+    {
+      "name": "australian_citizen_f",
+      "type": "Integer",
+      "title": "Australian Citizens - Female",
+      "description": "Australian Citizens - Female.",
+      "stype": "ratio",
+      "isDimension": false
+    },
+    {
+      "name": "australian_citizen_m",
+      "type": "Integer",
+      "title": "Australian Citizens - Male",
+      "description": "Australian Citizens - Male.",
+      "stype": "ratio",
+      "isDimension": false
+    },
+    {
+      "name": "australian_citizen_p",
+      "type": "Integer",
+      "title": "Australian Citizens - Person",
+      "description": "Australian Citizens - Person.",
+      "stype": "ratio",
+      "isDimension": false
+    },
+    {
+      "name": "in_the_labour_force_p",
+      "type": "Integer",
+      "title": "Persons in the Labour Force ",
+      "description": "Persons in the Labour Force.",
+      "stype": "ratio",
+      "isDimension": false
+    },
+    {
+      "name": "not_in_the_labour_force_f",
+      "type": "Integer",
+      "title": "Females Not in the Labour Force ",
+      "description": "Females Not in the Labour Force.",
+      "stype": "ratio",
+      "isDimension": false
+    },
+    {
+      "name": "not_in_the_labour_force_m",
+      "type": "Integer",
+      "title": "Males Not in the Labour Force ",
+      "description": "Males Not in the Labour Force.",
+      "stype": "ratio",
+      "isDimension": false
+    },
+    {
+      "name": "not_in_the_labour_force_p",
+      "type": "Integer",
+      "title": "Persons Not in the Labour Force ",
+      "description": "Persons Not in the Labour Force.",
+      "stype": "ratio",
+      "isDimension": false
+    },
+    {
+      "name": "spks_eng_only_5yrs_pls_f",
+      "type": "Integer",
+      "title": "Females that speak English only and Aged 5 years or more",
+      "description": "Females that speak English only and Aged 5 years or more.",
+      "stype": "ratio",
+      "isDimension": false
+    },
+    {
+      "name": "spks_eng_only_5yrs_pls_m",
+      "type": "Integer",
+      "title": "Males that speak English only and Aged 5 years or more ",
+      "description": "Males that speak English only and Aged 5 years or more.",
+      "stype": "ratio",
+      "isDimension": false
+    },
+    {
+      "name": "spks_eng_only_5yrs_pls_p",
+      "type": "Integer",
+      "title": "Persons that speak English only and Aged 5 years or more",
+      "description": "Persons that speak English only and Aged 5 years or more.",
+      "stype": "ratio",
+      "isDimension": false
+    },
+    {
+      "name": "spks_lang_oth_eng_5y_ovr_f",
+      "type": "Integer",
+      "title": "Females that speak Language other than English and Aged 5 years or more",
+      "description": "Females that speak Language other than English and Aged 5 years or more",
+      "stype": "ratio",
+      "isDimension": false
+    },
+    {
+      "name": "spks_lang_oth_eng_5y_ovr_m",
+      "type": "Integer",
+      "title": "Males that speak Language other than English and Aged 5 years or more",
+      "description": "Males that speak Language other than English and Aged 5 years or more.",
+      "stype": "ratio",
+      "isDimension": false
+    },
+    {
+      "name": "spks_lang_oth_eng_5y_ovr_p",
+      "type": "Integer",
+      "title": "Persons that speak Language other than English and Aged 5 years or more",
+      "description": "Persons that speak Language other than English and Aged 5 years or more.",
+      "stype": "ratio",
+      "isDimension": false
+    },
+    {
+      "name": "total_male",
+      "type": "Integer",
+      "title": "Males total",
+      "description": "Males total.",
+      "stype": "ratio",
+      "isDimension": false
+    },
+    {
+      "name": "total_female",
+      "type": "Integer",
+      "title": "Females total",
+      "description": "Females total.",
+      "stype": "ratio",
+      "isDimension": false
+    },
+    {
+      "name": "unemployed_f",
+      "type": "Integer",
+      "title": "Unemployed Females",
+      "description": "Unemployed Females.",
+      "stype": "ratio",
+      "isDimension": false
+    },
+    {
+      "name": "unemployed_m",
+      "type": "Integer",
+      "title": "Unemployed Males",
+      "description": "Unemployed Males.",
+      "stype": "ratio",
+      "isDimension": false
+    },
+    {
+      "name": "unemployed_p",
+      "type": "Integer",
+      "title": "Unemployed Persons",
+      "description": "Unemployed Persons.",
+      "stype": "ratio",
+      "isDimension": false
+    },
+    {
+      "name": "unemployment_rate_p",
+      "type": "Double",
+      "title": "Persons Unemployment Rate",
+      "description": "Persons Unemployment Rate.",
+      "stype": "ratio",
+      "isDimension": false
+    }
+  ],
+  "filter": {
+    "filterType": "tabular",
+    "spatial": {
+      "bbox": [144.037531296, -38.6787999535, 146.192502112, -36.9581548025]
+    },
+    "states": []
+  }
+}
