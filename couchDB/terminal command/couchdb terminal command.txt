@@ -9,6 +9,9 @@ password: admin
 #login MRC
 ssh -i hh_test_key.pem ubuntu@172.26.134.17
 
+#copy local file to MRC
+scp -i hh_test_key.pem -r ../twitter_harvest/source_code ubuntu@172.26.134.17:twitter_harvest_test
+
 ###########
 #install couchDB
 sudo apt update && sudo apt install -y curl apt-transport-https gnupg
@@ -54,3 +57,10 @@ curl -X PUT http://admin:admin@172.26.134.17:5984/twitter/_design/test_count\
 ##########
 #get from view
 curl -XGET "http://admin:admin@172.26.134.17:5984/twitter/_design/test_count/_view/count?reduce=true&group_level=1" | jq '.'
+
+
+172.26.128.223
+
+curl -X PUT http://admin:admin@172.26.128.223:5984/twitter/_design/count\
+   --data @/home/hh/ccc/couchDB/view2.json\
+   --header 'Content-Type:application/json'

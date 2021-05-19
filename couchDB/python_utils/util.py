@@ -58,9 +58,22 @@ def get_view(ip_address,user_name,password,db_name,design_doc_name,view_name,gro
     url = "http://{}:{}@{}:5984/{}/_design/{}/_view/{}?reduce=true&group_level={}".format(user_name,password,ip_address,db_name,design_doc_name,view_name,group_level)
     #print(url)
     response = requests.get(url)
-    result = json.dumps(response.json())
+    result = response.json()
+    #result = json.dumps(response.json())
     #print(result)
     return result
+    
+def write_json(file_path,content):
+    with open(file_path,"w") as f:
+        json.dump(content,f)
+        print("write json successfully")
+
+def load_json(file_path):
+    with open(file_path,"r") as f:
+        result = json.load(f)
+        print("load json successfully")
+    return result
+
 
 
 

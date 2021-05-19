@@ -1,15 +1,15 @@
 import util
 
-ip_address = "172.26.134.17"
+ip_address = "172.26.133.138"
 user_name = "admin"
 password = "admin"
-db_name = "test_db"
+db_name = "twitter"
 ###json_path need to change
 json_path = "./tweet_data.json"
 ###view_path need to change
 design_doc_path = "./view.json"
-design_doc_name = "counter2"
-view_name = "count"
+design_doc_name = "test_design"
+view_name = "city"
 group_level = 1
 #util.get_db_list(ip_address,user_name,password)
 #util.create_db(ip_address,user_name,password,db_name)
