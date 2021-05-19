@@ -1,3 +1,5 @@
 function (doc) {
-    emit([doc.user_location_first], 1);
+    if(doc.user_location_first != null) {
+      emit([doc.user_location_first], 1);
+    }
   }

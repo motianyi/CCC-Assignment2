@@ -1,12 +1,11 @@
 import util
 
-
 ip_address = "172.26.133.138"
 user_name = "admin"
 password = "admin"
 db_name = "twitter"
 
-design_doc_name = "test_design"
+design_doc_name = "twitter_mapreduce"
 view_name = "city"
 group_level = 1
 
