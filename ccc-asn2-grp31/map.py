@@ -6,9 +6,10 @@ import os
 import json
 import pandas as pd
 from folium.plugins import MarkerCluster
+import numpy as np
 
 # Create a map object
-m = folium.Map(location=[-37.840935, 144.946457], zoom_start=6, tiles='CartoDB dark_matter')
+m = folium.Map(location=[-37.840935, 144.946457], zoom_start=6)
 
 # add riles to map
 # folium.raster_layers.TileLayer('OpenStreetMap').add_to(m)
@@ -17,24 +18,21 @@ m = folium.Map(location=[-37.840935, 144.946457], zoom_start=6, tiles='CartoDB d
 # folium.raster_layers.TileLayer('Stamen Watercolor').add_to(m)
 # folium.raster_layers.TileLayer('CartoDB positron').add_to(m)
 # folium.raster_layers.TileLayer('CartoDB dark_matter').add_to(m)
-
 # # add layer control to show different maps
 # folium.LayerControl(position='topright', collapsed= False).add_to(m)
 
 # Global tootip
 tooltip = 'Click For More Info'
 
-# # Create custom marker icon
-# # logoIcon = folium.features.CustomIcon('logo.jpg', icon_size=(50,50))
-
-population = os.path.join('data', 'population.csv')
-total_people = pd.read_csv(population)
+# Geojson data
+greater_city = os.path.join('data', 'greater_capital_city.geojson')
+# csv data
+total_people = os.path.join('data', 'population.csv')
+# pass total people data to city_data
+city_data = pd.read_csv(total_people, usecols=np.arange(0,74))
 
 # Vega data
 vis = os.path.join('data', 'vis1.json')
-
-# Geojson data
-greater_city_geo = os.path.join('data', 'greater_capital_city.geojson')
 
 # Create city markers
 df = pd.DataFrame({
@@ -47,40 +45,30 @@ for i, row in df.iterrows():
         location=[row['latitude'], row['longitude']],
         popup=row['city'],
         tooltip=tooltip,
-        icon=folium.Icon(color='beige')
+        icon=folium.Icon(color='gray')
     ).add_to(m)
 
+# Create map division
 m.choropleth(
-    geo_data = greater_city_geo,
+    geo_data = greater_city,
     name = 'choropleth',
-    data = total_people,
-    columns = ['gccsa_code_2011', 'p_tot'],
+    data = city_data,
+    columns = [' gccsa_code_2011', ' p_tot'],
     key_on = 'feature.properties.GCC_CODE16',
-    fill_color = 'YlGn',
-    fill_opacity = 0.7,
+    fill_color = 'YlGnBu',
+    fill_opacity = 0.8,
     line_opacity = 0.2,
-    legend_name = 'Number of 30-34'
+    legend_name = 'Total People',
 )
-
 folium.LayerControl().add_to(m)
 
 # Create visual marker - eg
 folium.Marker([-31.773512, 133.857048], 
                 popup=folium.Popup(max_width=450).add_child(folium.Vega(json.load(open(vis)), width=450, height=250))).add_to(m),
 
-# # Create a mark cluster object
-# marker_cluster = MarkerCluster().add_to(m)
-# for LATITUDE, LONGITUDE, ROUTES_USING_STOP in tweet_data:
-#     folium.Marker(
-#         location=[LATITUDE, LONGITUDE],
-#         icon=None,
-#         popup=ROUTES_USING_STOP,
-#     ).add_to(marker_cluster)
-# m.add_child(marker_cluster)
-
 # create borders
 folium.GeoJson(
-    greater_city_geo,
+    greater_city,
     style_function=lambda feature: {
         'fillColor': '#B2C5B2',
         'color': '#6B8E4E',
@@ -88,15 +76,6 @@ folium.GeoJson(
         'dashArray': '5,5'    
     }
 ).add_to(m)
-# folium.GeoJson(
-#     australia_geo,
-#     style_function=lambda feature: {
-#         'fillColor': '#B2C5B2',
-#         'color': '#D5DDDF',
-#         'weight': 2,
-#         'dashArray': '5,5'    
-#     }
-# ).add_to(m)
 
 # Generate map
 m.save('map.html') 
