@@ -8,11 +8,11 @@
   become: yes
   shell: docker pull "{{ harvester_image }}"
 
-- name: Stop a container
-  become: yes
-  docker_container:
-    name: "{{ harvester_name }}"
-    state: stopped
+# - name: Stop a container
+#   become: yes
+#   docker_container:
+#     name: "{{ harvester_name }}"
+#     state: stopped
 
 - name: recreate container
   become: yes
