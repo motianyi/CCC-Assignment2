@@ -18,7 +18,7 @@ def search_write_covid():
    # calling the api 
    api = tweepy.API(auth)
    
-   covid_tweet = tweepy.Cursor(api.search, q = 'covid' or 'coronavirus',  geocode ="-24.25,133.416667,2100km").items(2400)
+   covid_tweet = tweepy.Cursor(api.search, q = 'income',  geocode ="-24.25,133.416667,2100km").items(2400)
    #covid_tweet = tweepy.Cursor(api.search, q = 'kpop',  geocode ="-24.25,133.416667,2100km").items(2400)
 
    for tweet in covid_tweet:
@@ -58,7 +58,7 @@ def search_write_covid():
       print(text, tweet_location, user_location)
 
          
-      with open("covid_search.csv", "a", encoding='utf-8') as f:
+      with open("income_search.csv", "a", encoding='utf-8') as f:
          f.write("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n" % (text,
                                                                tweet.lang,
                                                                tweet_longitude,
@@ -76,8 +76,13 @@ def search_write_covid():
 
 def loop_search_covid():
    while True:
-      search_write_covid()
-      time.sleep(43200)
+      try:
+         search_write_covid()
+      except tweepy.error.TweepError:
+         print("Reach rate limit! Twitter error response: status code = 429")
+         time.sleep(60)
+      else:
+         time.sleep(920)
 
 
 if __name__ == "__main__":
