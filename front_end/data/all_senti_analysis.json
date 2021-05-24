@@ -1,0 +1,65 @@
+{
+    "0": {
+        "gcc_code16": "2GMEL",
+        "gcc_name16": "Greater Melbourne",
+        "senti_score": 0.6512724207,
+        "num_neg": 3636,
+        "num_neu": 13804,
+        "num_posi": 8652,
+        "tweets_count": 26092
+    },
+    "1": {
+        "gcc_code16": "1GSYD",
+        "gcc_name16": "Greater Sydney",
+        "senti_score": 0.5969820932,
+        "num_neg": 3250,
+        "num_neu": 14701,
+        "num_posi": 7961,
+        "tweets_count": 25912
+    },
+    "2": {
+        "gcc_code16": "3GBRI",
+        "gcc_name16": "Greater Brisbane",
+        "senti_score": 0.6560055223,
+        "num_neg": 1213,
+        "num_neu": 4538,
+        "num_posi": 2941,
+        "tweets_count": 8692
+    },
+    "3": {
+        "gcc_code16": "4GADE",
+        "gcc_name16": "Greater Adelaide",
+        "senti_score": 0.8082550775,
+        "num_neg": 565,
+        "num_neu": 2407,
+        "num_posi": 1607,
+        "tweets_count": 4579
+    },
+    "4": {
+        "gcc_code16": "2GMEL",
+        "gcc_name16": "Greater Perth",
+        "senti_score": 0.6727444625,
+        "num_neg": 1129,
+        "num_neu": 3716,
+        "num_posi": 2559,
+        "tweets_count": 7404
+    },
+    "5": {
+        "gcc_code16": "8ACTE",
+        "gcc_name16": "Australian Capital Territory",
+        "senti_score": 0.8348817568,
+        "num_neg": 332,
+        "num_neu": 1094,
+        "num_posi": 942,
+        "tweets_count": 2368
+    },
+    "6": {
+        "gcc_code16": "nothing",
+        "gcc_name16": "Australia",
+        "senti_score": 0.592939056,
+        "num_neg": 25347,
+        "num_neu": 105299,
+        "num_posi": 59102,
+        "tweets_count": 189748
+    }
+}
