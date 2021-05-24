@@ -39,5 +39,5 @@ sa.sentiment_results_cal(df_covid,'covid_senti_analysis.csv','covid_senti_analys
 #covid_vaccine_sentiment_analysis
 
 tweets_covid_vaccine_df = df_covid[df_covid['text'].str.contains('vaccine')]
-sa.sentiment_results_cal(df_covid,'covid_vaccine_senti_analysis.csv','covid_vaccine_senti_analysis.json')
+sa.sentiment_results_cal(tweets_covid_vaccine_df,'covid_vaccine_senti_analysis.csv','covid_vaccine_senti_analysis.json')
 
