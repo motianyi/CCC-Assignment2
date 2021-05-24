@@ -1,14 +1,15 @@
 import tweepy
 import pandas as pd
 import csv
+import time
 # assign the values accordingly
-consumer_key = '7JJmR6WKltv8A1me6OC59bWJB'  
-consumer_secret = 'u5oFOgaFJrwLqeO6yx9RYLK204xTeCutPSYCbP2pi7VBk1Wezy'  
-access_token = '1252574059885236225-Ey0mZB9xIm4UKhQCrCUcstxtkAU1V3'  
-access_token_secret = 'ryrZHx48KCC2d2MHmrZlw6Zmg10oZDkL9nC6GhcUctKfj'
-bearer_token = 'AAAAAAAAAAAAAAAAAAAAAKp8PwEAAAAA4CcQXxDgeuiMcZm3%2BdpHa5tP%2FTs%3DfJogwgGmpkl0e8wPLPQ7TK7B32IAuoouA6VSJLISKOFCWtTWmi'
+consumer_key = 'j3b3PWq7LnrUa1vNGHBPc2Q51'  
+consumer_secret = 'oXO0zpl90FO723ClkNS0v1XQYyoVb3uyeg9BAbU0RBR30jnNri'  
+access_token = '1065560839795617792-CJAjycsjB15Lugx1SBWeRuVlNIGZKS'  
+access_token_secret = 'dYYPuvIPHcA65nRjB1HNyccGM78wGtLlhgk1CwOLnpLbM'
+bearer_token = 'AAAAAAAAAAAAAAAAAAAAAFKrPwEAAAAAMpo30edi100KWbYjN2Lywu16BGU%3DNezyDTwSv2NUlsFYJW7xdpuxJyNQ5sV2taFgICFiZGvQm0VQDU'
 
-df = pd.read_csv("has_geo_df.csv", quoting=csv.QUOTE_NONE, encoding='utf-8', low_memory=False)
+df = pd.read_csv("all.csv", quoting=csv.QUOTE_NONE, encoding='utf-8', low_memory=False)
 user_ids = df['user_id']
 user_ids.drop_duplicates()
 #print(user_ids[:1000])
@@ -18,16 +19,23 @@ auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth)
 
 count = 0
-#for user_id in user_ids[1000:3000]:
-for user_id in user_ids:
+count_error = 0
+for i in range (len(user_ids)):
     try:
-        id = int(user_id)
+        id = int(user_ids[i])
         statuses = api.user_timeline(id)
         print(count)
     except tweepy.error.TweepError:
         print(count)
         print("Not authoorized")
+        count_error += 1
+        if count_error >= 10:
+            count_error = count_error -10
+            i = i - 10
+            count = count - 10
+            time.sleep(900)
     else:
+        count_error = 0
         for status in statuses:
             is_retweet = hasattr(status, "retweeted_status")
             is_quote = hasattr(status, "quoted_status")
@@ -62,7 +70,7 @@ for user_id in user_ids:
             print(text, tweet_location, user_location)
 
             
-            with open("has_geo_user_timeline_search.csv", "a", encoding='utf-8') as f:
+            with open("user_timeline_search_yan.csv", "a", encoding='utf-8') as f:
                 f.write("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n" % (text,
                                                                 status.lang,
                                                                 tweet_longitude,

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<title>senti-score-visualization</title>
+		<script src="../static/js/jquery-3.6.0.min.js"></script>
+		<script src="../static/js/echarts.min.js"></script>
+		<style type="text/css">
+			body{
+				background: #EDEDED;
+			}
+			.grid {
+				display: grid;
+				grid-template-columns: 1fr 1fr 1fr;
+				grid-template-rows: 1fr 1fr 1fr;
+				grid-template-areas: 
+				"box0 box0 box0"
+				"box1 box2 box3"
+				"box4 box5 box6";
+				grid-gap: 1em;
+				grid-auto-rows: minmax(100px, auto);
+				justify-content: center;
+				align-content: center;
+				justify-items: center;
+				align-items: center;
+			}
+			.grid1 {
+				display: grid;
+				grid-template-columns: 1fr 1fr 1fr;
+				grid-template-rows: 1fr 1fr 1fr;
+				grid-template-areas: 
+				"box00 box00 box00"
+				"box11 box22 box33"
+				"box44 box55 box66";
+				grid-gap: 1em;
+				grid-auto-rows: minmax(100px, auto);
+				justify-content: center;
+				align-content: center;
+				justify-items: center;
+				align-items: center;
+			}
+			.title{
+				display: flex;
+				justify-items: center;
+				align-items: center;
+			}
+			.box0{
+				grid-area: box0;
+			}
+			.box00{
+				grid-area: box00;
+			}
+			.box1{
+				grid-area: box1;
+			}
+			.box11{
+				grid-area: box11;
+			}
+			.box2{
+				grid-area: box2;
+			}
+			.box22{
+				grid-area: box22;
+			}
+			.box3{
+				grid-area: box3;
+			}
+			.box33{
+				grid-area: box33;
+			}
+			.box4{
+				grid-area: box4;
+			}
+			.box5{
+				grid-area: box5;
+			}
+			.box55{
+				grid-area: box55;
+			}
+			.box6{
+				grid-area: box6;
+			}
+			.box66{
+				grid-area: box66;
+			}
+			.grid div:nth-child(even) {
+				background-color: #EDEDED;
+			}
+			.grid div:nth-child(odd) {
+				background-color: #EDEDED;
+			}
+			.lang {
+				margin: 40px;
+				display: flex;
+			}
+		</style>
+		<body>
+			<div id="title" class="title" style="width: 100%; height: 60px;">
+				<h1>Language used</h1>
+			</div>
+			<div class="lang">
+				<div id="lang1" style="width: 50%; height: 300px;">chart1</div>
+				<div id="lang2" style="width: 50%; height: 300px;"></div>
+			</div>
+			
+			<div id="title" class="title" style="width: 100%; height: 60px;">
+				<h1>All Sentiment Analysis</h1>
+			</div>
+			<div class="grid">
+<<<<<<< HEAD:front_end/templates/overview.html
+				<div id="total-senti" class="box0" style="width: 50%; height: 300px;"></div>
+				<div id="melbourne" class="box1" style="width: 100%; height: 280px;">1</div>
+				<div id="sydney" class="box2" style="width: 100%; height: 280px;">2</div>
+				<div id="canberra" class="box3" style="width: 100%; height: 280px;">3</div>
+				<div id="brisbane" class="box4" style="width: 100%; height: 280px;">4</div>
+				<div id="adelaide" class="box5" style="width: 100%; height: 280px;">5</div>
+				<div id="perth" class="box6" style="width: 100%; height: 280px;">6</div>
+			</div>	
+
+			<div id="title" class="title" style="width: 100%; height: 60px;">
+				<h1>Sentiment Analysis with Tag</h1>
+			</div>
+			<div class="grid1">
+				<div id="tag-senti" class="box00" style="width: 50%; height: 300px;"></div>
+				<div id="melbourne-t" class="box11" style="width: 100%; height: 280px;">1</div>
+				<div id="sydney-t" class="box22" style="width: 100%; height: 280px;">2</div>
+				<div id="canberra-t" class="box33" style="width: 100%; height: 280px;">3</div>
+				<div id="brisbane-t" class="box44" style="width: 100%; height: 280px;">4</div>
+				<div id="adelaide-t" class="box55" style="width: 100%; height: 280px;">5</div>
+				<div id="perth-t" class="box66" style="width: 100%; height: 280px;">6</div>
+			</div>	
+
+			<script src="../echarts/lang1.js"></script>
+			<script src="../echarts/lang2.js"></script>
+=======
+			<div id="total-senti" class="box0" style="width: 50%; height: 300px;">1</div>
+			<div id="melbourne" class="box1" style="width: 100%; height: 280px;">2</div>
+			<div id="sydney" class="box2" style="width: 100%; height: 280px;">3</div>
+			<div id="canberra" class="box3" style="width: 100%; height: 280px;">4</div>
+			<div id="brisbane" class="box4" style="width: 100%; height: 280px;">5</div>
+			<div id="adelaide" class="box5" style="width: 100%; height: 280px;">6</div>
+			<div id="perth" class="box6" style="width: 100%; height: 280px;">7</div>
+			</div>				
+>>>>>>> 04b68e956aeeaad6196f333a4cce08144cac04c9:front_end/templates/senti-visual.html
+			<script src="../echarts/total-senti.js"></script>
+			<script src="../echarts/adel-senti.js"></script>
+			<script src="../echarts/bris-senti.js"></script>
+			<script src="../echarts/canb-senti.js"></script>
+			<script src="../echarts/melb-senti.js"></script>
+			<script src="../echarts/per-senti.js"></script>
+			<script src="../echarts/syd-senti.js"></script>
+		</body>	
+</html>
