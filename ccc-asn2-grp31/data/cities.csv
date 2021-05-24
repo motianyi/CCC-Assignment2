@@ -1,0 +1,7 @@
+gcc_code16, gcc_name16, senti_score, num_neg, num_neu, num_posi
+"1GSYD","Greater Sydney",0.6161971830985915,3669,18191,9380
+"2GMEL","Greater Melbourne",0.6693283385909569,4034,16393,10005
+"3GBRI","Greater Brisbane",0.6472523219814241,1376,5573,3387
+"4GADE","Greater Adelaide",0.8153039073806078,647,2980,1901
+"5GPER","Greater Perth",0.6787330316742082,1223,4339,2836
+"8ACTE","Australian Capital Territory",0.811866316184754,366,1269,1028
