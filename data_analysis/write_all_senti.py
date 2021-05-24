@@ -36,3 +36,8 @@ df_covid = pd.concat([df_covid, tweets_covid_all_df],ignore_index=True)
 
 sa.sentiment_results_cal(df_covid,'covid_senti_analysis.csv','covid_senti_analysis.json')
 
+#covid_vaccine_sentiment_analysis
+
+tweets_covid_vaccine_df = df_covid[df_covid['text'].str.contains('vaccine')]
+sa.sentiment_results_cal(df_covid,'covid_vaccine_senti_analysis.csv','covid_vaccine_senti_analysis.json')
+
