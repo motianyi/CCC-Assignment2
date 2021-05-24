@@ -1,0 +1,7 @@
+http://172.26.133.138:5984/_utils
+user: admin
+pwd: admin
+
+http://172.26.128.223:5984/_utils
+user: admin
+pwd: admin

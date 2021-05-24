@@ -1,0 +1,137 @@
+
+#copy local file to MRC
+scp -i hh_test_key.pem -r ../twitter_harvest/source_code ubuntu@172.26.134.17:twitter_harvest_test
+scp -i demo.pem -r ./twitter_covid_search_with_docker ubuntu@172.26.128.223:
+scp -i demo.pem -r ./twitter_income_search_with_docker ubuntu@172.26.128.223:
+
+#log in to MRC need demo.pem under current dic
+#or can set an the token as an environmet virable
+ssh -i demo.pem ubuntu@172.26.128.223
+
+#send local tr file to MRC instacne
+scp -i demo.pem -r ~/twitter_harvest.tr ubuntu@172.26.133.138:twitter_harvest.tr
+scp -i demo.pem -r ~/tweetapi_search_data.json ubuntu@172.26.133.138:python_test/tweetapi_search_data.json
+
+#set environment value
+export BEARER_TOKEN=AAAAAAAAAAAAAAAAAAAAABHZOgEAAAAAd6vgSgWd%2BXJyUtXbbK%2BSo97nx9o%3D4tBPb5WuwUPGFKRTqL2Psh8LmORuC28o9h5ATRXPmA64vrjltJ
+
+#sample stream
+curl https://api.twitter.com/2/tweets/sample/stream -H "Authorization: Bearer AAAAAAAAAAAAAAAAAAAAABHZOgEAAAAAd6vgSgWd%2BXJyUtXbbK%2BSo97nx9o%3D4tBPb5WuwUPGFKRTqL2Psh8LmORuC28o9h5ATRXPmA64vrjltJ"
+
+#add rules
+curl -X POST 'https://api.twitter.com/2/tweets/search/stream/rules' -H "Content-type: application/json" -H "Authorization: Bearer AAAAAAAAAAAAAAAAAAAAABHZOgEAAAAAd6vgSgWd%2BXJyUtXbbK%2BSo97nx9o%3D4tBPb5WuwUPGFKRTqL2Psh8LmORuC28o9h5ATRXPmA64vrjltJ" -d '{
+  "add": [
+    {"value": "from:twitterdev from:twitterapi has:links"},
+    {"value": "cat", "tag":"tweets with cat"},
+    {"value": "dog sample:15", "tag": "random 15% tweets with dog"}
+  ]
+}'
+
+#delete rules
+curl -X POST 'https://api.twitter.com/2/tweets/search/stream/rules' -H "Content-type: application/json" -H "Authorization: Bearer AAAAAAAAAAAAAAAAAAAAABHZOgEAAAAAd6vgSgWd%2BXJyUtXbbK%2BSo97nx9o%3D4tBPb5WuwUPGFKRTqL2Psh8LmORuC28o9h5ATRXPmA64vrjltJ" -d '{
+  "delete": {
+      "ids":[
+          "1390602144844161027"
+      ]
+  }
+}'
+
+#see endpoint info(last line is rules sended)
+curl -v https://api.twitter.com/2/tweets/search/stream/rules -H "Authorization: Bearer AAAAAAAAAAAAAAAAAAAAABHZOgEAAAAAd6vgSgWd%2BXJyUtXbbK%2BSo97nx9o%3D4tBPb5WuwUPGFKRTqL2Psh8LmORuC28o9h5ATRXPmA64vrjltJ"
+
+#get requirements file for docker
+pip freeze > requirements.txt
+
+#build docker image
+docker build -t twitter_harvest_img .
+
+#pull docker images from docker hub
+docker pull docker pull hh1752756228/twitter_stream_harvest:v1
+
+#start container from image
+#-it means interact within container 
+#-v ???means set a dic outside docker to synchronize with the changes of dic inside docker
+#--name to set container name
+#-p set port 
+#bash goes into the command line in docker. appears at the end. needs -it parameter 
+docker run -it -v ~/python_test:/code/data --name=twitter_harvest -p 5000:5000 twitter_harvest_img bash
+
+#simple way to start container from image
+docker run --name=twitter_stream_harvest hh1752756228/twitter_stream_harvest:v1
+
+#start container
+docker start twitter_harvest
+
+#go into container 
+docker exec -it twitter_harvest bash
+
+#load images from tr file
+docker load < ~/twitter_harvest.tr
+
+#save images as tr file
+docker save twitter_harvest_img > ~/twitter_harvest.tr
+
+#see all images
+docker images
+
+#see all containers
+docker ps -a
+
+#remove docker image
+docker rmi image_name:tag
+
+#remove container
+docker rm container_name
+
+#stop container
+docker stop container_name
+
+#tag docker image
+sudo docker tag twitter_covid_search:latest hh1752756228/twitter_covid_search:v1
+sudo docker tag twitter_income_search:latest hh1752756228/twitter_income_search:v1
+
+#logint docker hub
+sudo docker login
+
+
+
+
+
+
+#login MRC
+ssh -i demo.pem ubuntu@172.26.128.223
+
+#copy local file to MRC
+scp -i demo.pem -r ./twitter_covid_search_with_docker ubuntu@172.26.128.223:
+scp -i demo.pem -r ./twitter_income_search_with_docker ubuntu@172.26.128.223:
+scp -i demo.pem -r ./twitter_beer_search_with_docker ubuntu@172.26.128.223:
+
+#build docker image
+sudo docker build -t twitter_covid_search .
+sudo docker build -t twitter_income_search .
+sudo docker build -t twitter_beer_search .
+
+
+#tag docker image
+sudo docker tag twitter_covid_search:latest hh1752756228/twitter_covid_search:v1
+sudo docker tag twitter_income_search:latest hh1752756228/twitter_income_search:v1
+sudo docker tag twitter_beer_search:latest hh1752756228/twitter_beer_search:v1
+
+
+#remove old image
+sudo docker rmi twitter_covid_search
+sudo docker rmi twitter_income_search
+sudo docker rmi twitter_beer_search
+
+#push docker image to docker hub
+sudo docker push hh1752756228/twitter_covid_search:v1
+sudo docker push hh1752756228/twitter_income_search:v1
+sudo docker push hh1752756228/twitter_beer_search:v1
+
+#build and run docker container
+sudo docker run -d --name=twitter_covid_search hh1752756228/twitter_covid_search:v1
+sudo docker run -d --name=twitter_income_search hh1752756228/twitter_income_search:v1
+sudo docker run -d --name=twitter_beer_search hh1752756228/twitter_beer_search:v1
+
+
+a
