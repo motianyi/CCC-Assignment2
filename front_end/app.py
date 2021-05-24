@@ -34,5 +34,9 @@ def income():
 def ente():
     return render_template('ente.html')
 
+@app.route('/overview.html')
+def overview():
+    return render_template('overview.html')
+
 if __name__ == '__main__':
     app.run(debug = True)
