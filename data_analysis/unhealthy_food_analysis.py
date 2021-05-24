@@ -25,15 +25,15 @@ tweets_unhealthy_adel_df = tweets_unhealthy_df[tweets_unhealthy_df['user_locatio
 tweets_unhealthy_perth_df = tweets_unhealthy_df[tweets_unhealthy_df['user_location'] == 'perth']
 tweets_unhealthy_can_df = tweets_unhealthy_df[tweets_unhealthy_df['user_location'] == 'canberra']
 
-unhealthy_food_info = pd.DataFrame(columns=['gcc_code16', 'gcc_name16', 'tweets_count', 'percentage'])
+unhealthy_food_info = pd.DataFrame(columns=['gcc_code16', 'gcc_name16', 'tweets_count', 'un/all in city','un/all un'])
 
-unhealthy_food_info.loc[0] = ['2GMEL','Greater Melbourne',len(tweets_unhealthy_melb_df),len(tweets_unhealthy_melb_df)/len(tweets_melb_df)]
-unhealthy_food_info.loc[1] = ['1GSYD','Greater Sydney',len(tweets_unhealthy_syd_df),len(tweets_unhealthy_syd_df)/len(tweets_syd_df)]
-unhealthy_food_info.loc[2] = ['3GBRI','Greater Brisbane',len(tweets_unhealthy_bris_df),len(tweets_unhealthy_bris_df)/len(tweets_bris_df)]
-unhealthy_food_info.loc[3] = ['4GADE','Greater Adelaide',len(tweets_unhealthy_adel_df),len(tweets_unhealthy_adel_df)/len(tweets_adel_df)]
-unhealthy_food_info.loc[4] = ['2GMEL','Greater Perth',len(tweets_unhealthy_perth_df),len(tweets_unhealthy_perth_df)/len(tweets_perth_df)]
-unhealthy_food_info.loc[5] = ['8ACTE','Australian Capital Territory',len(tweets_unhealthy_can_df),len(tweets_unhealthy_can_df)/len(tweets_can_df)]
-unhealthy_food_info.loc[6] = ['nothing','Australia',len(tweets_unhealthy_df),len(tweets_unhealthy_df)/len(df)]
+unhealthy_food_info.loc[0] = ['2GMEL','Greater Melbourne',len(tweets_unhealthy_melb_df),len(tweets_unhealthy_melb_df)/len(tweets_melb_df),len(tweets_unhealthy_melb_df)/len(tweets_unhealthy_df)]
+unhealthy_food_info.loc[1] = ['1GSYD','Greater Sydney',len(tweets_unhealthy_syd_df),len(tweets_unhealthy_syd_df)/len(tweets_syd_df),len(tweets_unhealthy_syd_df)/len(tweets_unhealthy_df)]
+unhealthy_food_info.loc[2] = ['3GBRI','Greater Brisbane',len(tweets_unhealthy_bris_df),len(tweets_unhealthy_bris_df)/len(tweets_bris_df),len(tweets_unhealthy_bris_df)/len(tweets_unhealthy_df)]
+unhealthy_food_info.loc[3] = ['4GADE','Greater Adelaide',len(tweets_unhealthy_adel_df),len(tweets_unhealthy_adel_df)/len(tweets_adel_df),len(tweets_unhealthy_adel_df)/len(tweets_unhealthy_df)]
+unhealthy_food_info.loc[4] = ['2GMEL','Greater Perth',len(tweets_unhealthy_perth_df),len(tweets_unhealthy_perth_df)/len(tweets_perth_df),len(tweets_unhealthy_perth_df)/len(tweets_unhealthy_df)]
+unhealthy_food_info.loc[5] = ['8ACTE','Australian Capital Territory',len(tweets_unhealthy_can_df),len(tweets_unhealthy_can_df)/len(tweets_can_df),len(tweets_unhealthy_can_df)/len(tweets_unhealthy_df)]
+unhealthy_food_info.loc[6] = ['nothing','Australia',len(tweets_unhealthy_df),len(tweets_unhealthy_df)/len(df),len(tweets_unhealthy_df)/len(tweets_unhealthy_df)]
 
 print(unhealthy_food_info)
 
