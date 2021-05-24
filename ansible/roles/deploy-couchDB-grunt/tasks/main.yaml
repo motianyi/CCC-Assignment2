@@ -1,0 +1,11 @@
+- name: install grunt-couch
+  become: yes
+  shell: npm install grunt-couch
+
+- name: compile 
+  become: yes
+  shell: cd ../couchDB/grunt_couchdb; grunt couch-compile
+
+- name: push
+  become: yes
+  shell: cd ../couchDB/grunt_couchdb; grunt couch-push
