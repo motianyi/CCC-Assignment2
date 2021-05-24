@@ -9,4 +9,5 @@
     - role: set-up-http-proxy
     - role: dependency
     - role: set-up-docker-http-proxy
-    - role: deploy-flask
+    - role: deploy-web-server
+    - role: deploy-data-analyzer

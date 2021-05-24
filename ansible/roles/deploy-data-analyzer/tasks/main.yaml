@@ -1,0 +1,18 @@
+
+- name: pull image
+  become: yes
+  shell: docker pull "{{ data_analyzer_image }}"
+
+- name: stop server
+  become: yes
+  shell: docker rm -f "{{ data_analyzer_process }}"
+
+# Start the web server
+- name: start server
+  become: yes
+  shell: docker run --name "{{ data_analyzer_process }}" -v /home/ubuntu/data:/code/data -d "{{ data_analyzer_image }}"
+
+# - name: Log out from DockerHub
+#   become: yes
+#   docker_login:
+#     state: absent

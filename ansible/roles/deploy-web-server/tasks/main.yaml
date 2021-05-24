@@ -1,0 +1,37 @@
+- name: Log into DockerHub
+  become: yes
+  docker_login:
+    username: "{{ frontend_dockerhub_username }}"
+    password: "{{ frontend_dockerhub_password }}"
+
+- name: pull image
+  become: yes
+  shell: docker pull "{{ frontend_image }}"
+
+- name: stop server
+  become: yes
+  shell: docker rm -f "{{ frontend_process }}"
+
+# Start the web server
+- name: start server
+  become: yes
+  shell: docker run --name "{{ frontend_process }}" -v /home/ubuntu/data:/data -p "{{ frontend_port }}":8003 -d "{{ frontend_image }}"
+
+# - name: start server
+#   become: yes
+#   docker_container:
+#     name: "{{ frontend_process }}"
+#     image: "{{ frontend_image }}"
+#     state: started
+#     restart_policy: always
+#     published_ports:
+#       - "8887:8003"
+#     mounts:
+#       - source: /home/ubuntu/data
+#         target: /data
+#         read_only: yes
+
+- name: Log out from DockerHub
+  become: yes
+  docker_login:
+    state: absent

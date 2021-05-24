@@ -39,9 +39,12 @@ ansiple_python_interpreter: /usr/bin/python3
 ansible_user: ubuntu
 ansible_ssh_private_key_file: key/demo.pem
 
-# backend docker image config
-backend_process: flask_app
-backend_image: motianyi/ccc-flask-backend:v2
-backend_port: 8887
-backend_dockerhub_username: motianyi
-backend_dockerhub_password: makesense
+# frontend docker image config
+frontend_process: web-server
+frontend_image: motianyi/ccc-flask-backend:v5
+frontend_port: 8887
+frontend_dockerhub_username: motianyi
+frontend_dockerhub_password: makesense
+
+data_analyzer_process: data-analyzer
+data_analyzer_image: hh1752756228/twitter_analysis:v1
