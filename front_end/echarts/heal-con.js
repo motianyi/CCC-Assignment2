@@ -18,7 +18,7 @@ var heal_con_option = {
     xAxis: [
         {
             type: 'category',
-            data: ['Melbourne', 'Sydney', 'Canberra', 'Adelaide', 'Brisbane', 'Perth'],
+            data: [jsondata[index]["gcc_name16"]],
             axisPointer: {
                 type: 'shadow'
             }

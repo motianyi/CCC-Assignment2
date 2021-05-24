@@ -12,7 +12,7 @@ sentiment = os.path.join('../data', 'cities.csv')
 # pass total people data to city_data
 s_data = pd.read_csv(sentiment, usecols=np.arange(0,6))
 
-m = folium.Map(location=[-35.282001, 149.128998], zoom_start=6)
+m = folium.Map(location=[-37.840935, 144.946457], zoom_start=6)
 
 html = os.path.join('../templates/heal-con.html')
 
@@ -25,7 +25,7 @@ df = pd.DataFrame({
 for i, row in df.iterrows():
         folium.Marker(
         location=[row['latitude'], row['longitude']],
-        icon=folium.Icon(color='gray'),
+        icon=folium.Icon(color='cadetblue'),
         radius=6,
         fill_color='yellow', 
         tooltip=row['city']).add_to(m)
@@ -36,11 +36,11 @@ m.choropleth(
     data = s_data,
     columns = ['gcc_code16', ' senti_score'],
     key_on = 'feature.properties.GCC_CODE16',
-    fill_color = 'YlGn',
-    fill_opacity = 0.5,
+    fill_color = 'OrRd',
+    fill_opacity = 0.2,
     line_opacity = 0.2,
     legend_name = 'Sentiment Score',
-    highlight = True
+    highlight = True,
 )
 
 folium.LayerControl().add_to(m)

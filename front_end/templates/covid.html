@@ -9,16 +9,125 @@
 				body{
 					background: #EDEDED;
 				}
+				.h1{
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
+					align-items: center;
+					margin: 30px;
+				}
+				.grid {
+				display: grid;
+				grid-template-columns: 1fr 1fr 1fr;
+				grid-template-rows: 1fr 1fr 1fr;
+				grid-template-areas: 
+				"box0 box0 box0"
+				"box1 box2 box3"
+				"box4 box5 box6";
+				grid-gap: 1em;
+				grid-auto-rows: minmax(100px, auto);
+				justify-content: center;
+				align-content: center;
+				justify-items: center;
+				align-items: center;
+			}
+			.title{
+				display: flex;
+				justify-items: center;
+				align-items: center;
+			}
+			.box0{
+				grid-area: box0;
+			}
+			.box6{
+				grid-area: box6;
+			}
+			.grid div:nth-child(even) {
+				background-color: #EDEDED;
+			}
+			.grid div:nth-child(odd) {
+				background-color: #EDEDED;
+			}
 			</style>	
 		</head>
 		<body>
 			<div id="title" class="title" style="width: 100%; height: 60px;">
-				<h1>Covid-19 Influence</h1>
+				<h1>Percentage of Covid-19 Related Topics</h1>
+			</div>
+			<div class="h1">
+				<div id="covid-percentage" style="width: 80%; height: 400px;" class="percentage">2</div>
+			</div>
+
+			<div id="title" class="title" style="width: 100%; height: 60px;">
+				<h1>Sentiment Score in All Tweets</h1>
 			</div>
 			<div class="grid">
-				<div id="total-covid" style="width: 50%; height: 300px;"></div>
-			</div>	
+				<div id="total-senti" class="box0" style="width: 50%; height: 300px;"></div>
+				<div id="melbourne" class="box1" style="width: 100%; height: 280px;">1</div>
+				<div id="sydney" class="box2" style="width: 100%; height: 280px;">2</div>
+				<div id="canberra" class="box3" style="width: 100%; height: 280px;">3</div>
+				<div id="brisbane" class="box4" style="width: 100%; height: 280px;">4</div>
+				<div id="adelaide" class="box5" style="width: 100%; height: 280px;">5</div>
+				<div id="perth" class="box6" style="width: 100%; height: 280px;">6</div>
+			</div>
+
+			<div id="title" class="title" style="width: 100%; height: 60px;">
+				<h1>Sentiment Score in Covid Related Tweets</h1>
+			</div>
+			<div class="grid">
+				<div id="total-senti-c" class="box0" style="width: 50%; height: 300px;">0</div>
+				<div id="melbourne-c" class="box1" style="width: 100%; height: 280px;">1</div>
+				<div id="sydney-c" class="box2" style="width: 100%; height: 280px;">2</div>
+				<div id="canberra-c" class="box3" style="width: 100%; height: 280px;">3</div>
+				<div id="brisbane-c" class="box4" style="width: 100%; height: 280px;">4</div>
+				<div id="adelaide-c" class="box5" style="width: 100%; height: 280px;">5</div>
+				<div id="perth-c" class="box6" style="width: 100%; height: 280px;">6</div>
+			</div>
+
+			<div id="title" class="title" style="width: 100%; height: 60px;">
+				<h1>Sentiment Score in Covid & Vaccine Related Tweets</h1>
+			</div>
+			<div class="grid">
+				<div id="total-senti-cv" class="box0" style="width: 50%; height: 300px;">0</div>
+				<div id="melbourne-cv" class="box1" style="width: 100%; height: 280px;">1</div>
+				<div id="sydney-cv" class="box2" style="width: 100%; height: 280px;">2</div>
+				<div id="canberra-cv" class="box3" style="width: 100%; height: 280px;">3</div>
+				<div id="brisbane-cv" class="box4" style="width: 100%; height: 280px;">4</div>
+				<div id="adelaide-cv" class="box5" style="width: 100%; height: 280px;">5</div>
+				<div id="perth-cv" class="box6" style="width: 100%; height: 280px;">6</div>
+			</div>
+
+			<div id="title" class="title" style="width: 100%; height: 60px;">
+				<h1>Sentiment Analysis with Covid</h1>
+			</div>
+			<div class="h1">
+				<div id="covid-ana" style="width: 80%; height: 400px;">2</div>
+			</div>
+
 			<script src="../echarts/covid-tot.js"></script>
+			<script src="../echarts/covid-perc.js"></script>
+			<script src="../echarts/total-senti.js"></script>
+			<script src="../echarts/adel-senti.js"></script>
+			<script src="../echarts/bris-senti.js"></script>
+			<script src="../echarts/canb-senti.js"></script>
+			<script src="../echarts/melb-senti.js"></script>
+			<script src="../echarts/per-senti.js"></script>
+			<script src="../echarts/syd-senti.js"></script>
+			<script src="../echarts/covid-senti-aus.js"></script>
+			<script src="../echarts/covid-senti-adel.js"></script>
+			<script src="../echarts/covid-senti-bris.js"></script>
+			<script src="../echarts/covid-senti-canb.js"></script>
+			<script src="../echarts/covid-senti-melb.js"></script>
+			<script src="../echarts/covid-senti-per.js"></script>
+			<script src="../echarts/covid-senti-syd.js"></script>
+			<script src="../echarts/covid-vac-senti-adel.js"></script>
+			<script src="../echarts/covid-vac-senti-aus.js"></script>
+			<script src="../echarts/covid-vac-senti-bris.js"></script>
+			<script src="../echarts/covid-vac-senti-canb.js"></script>
+			<script src="../echarts/covid-vac-senti-melb.js"></script>
+			<script src="../echarts/covid-vac-senti-per.js"></script>
+			<script src="../echarts/covid-vac-senti-syd.js"></script>
+			<script src="../echarts/covid-ana.js"></script>
 		</body>
 	
 </html>
