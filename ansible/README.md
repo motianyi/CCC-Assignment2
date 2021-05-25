@@ -54,13 +54,40 @@ This taks will execute ```db-deploy.yaml``` playbook whick consists of 6 roles. 
 - deploy-couchDB-cluster
     - Set up the couchDB cluster by through the RESTful API, by default, the first node in the instance list is the master node of the cluster.
 - deploy-couchDB-grunt
-    - run “couch-compile” script, which processes the Couch Directory Tree, and the 
+    - run “couch-compile” script, which processes the Couch Directory Tree
     - run“couch-push” script, which pushes the compiled documents to our couchdb database on MRC instances.
 
 ## Deploy twitter harvester
-The twitter harvest can be deployed by pulling image from docker hub.
-Login to MRC instance and using the following commands:
-
+This task will execute ```harvester-deploy.yaml``` playbook which consists of 1 role
+-   deploy-twitter_harvester
+    - login to docker hub   
+    - pull twitter harvest docker images from docker hub 
+    - run docker container from the pulled images
+    - logout from docker hub
+    
 ## Creating instances for webserver and data analyzer
+This task will execute ```webserver-.yaml``` playbook which consists of 4 roles
+- openstack-volume
+    - Creating the volumns used for each instances
+- openstack-security-group
+    - Set up the security rules for the instances
+- openstack-instance
+    - Create the instance for webserver and data analyzer.
+- save-ip
+    - The ip address will be automatically saved in ```inventory/inventory_file.ini```.
 
 ## Deploy the webserver and data analyzer
+This task will execute ```webserver-.yaml``` playbook which consists of 5 roles
+- set-up-http-proxy
+    - Adding HTTP_PROXY, HTTPS_PROXY, and NO_PROXY in ```/etc/environment``` directory on the instances so that the instance is able to access Internet and download dependencies.
+- dependency
+    - Install pip, vim, docker and other dependencies on the instances
+- set-up-docker-http-proxy
+    - Set up docker HTTP_PROXY, HTTPS_PROXY, and NO_PROXY enviroment variables following the instruction from: https://docs.docker.com/config/daemon/systemd/#httphttps-proxy
+- deploy-web-server
+    - pull the web-server docker image from docker hub and runs it in a docker container
+- deploy-data-analyzer
+    - pull the data-analyzer docker image from docker hub and runs it in a docker container
+
+
+
