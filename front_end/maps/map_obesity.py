@@ -1,15 +1,15 @@
-from folium.features import Choropleth, ColorLine
+from folium.features import Choropleth, ColorLine, Vega
 import pandas as pd
 import folium
 import os
 import numpy as np
+from folium import IFrame
 
 tooltip = 'click for details'
 
 greater_city = os.path.join('../data', 'greater_capital_city.geojson')
-unemployment = os.path.join('../data', 'unemployment_rate.csv')
-# pass total people data to city_data
-unemployment_data = pd.read_csv(unemployment, usecols=np.arange(0,4))
+obesity = os.path.join('../data', 'obesity.csv')
+ob_data = pd.read_csv(obesity, usecols=np.arange(0,3))
 
 m = folium.Map(location=[-35.282001, 149.128998], zoom_start=6)
 
@@ -20,27 +20,26 @@ df = pd.DataFrame({
     'longitude': [144.946457, 151.209900, 138.599503, 153.021072, 149.128998, 115.857048],
 })
 for i, row in df.iterrows():
-    folium.Marker(
+        folium.Marker(
         location=[row['latitude'], row['longitude']],
-        popup=row['city'],
-        tooltip=tooltip,
-        icon=folium.Icon(color='gray')
-    ).add_to(m)
+        icon=folium.Icon(color='cadetblue'),
+        radius=6,
+        fill_color='yellow', 
+        tooltip=row['city']).add_to(m)
 
 m.choropleth(
     geo_data = greater_city,
-    name = 'Unemployment Rate',
-    data = unemployment_data,
-    columns = [' gccsa_code_2016', ' labour_force_status_not_in_the_labour_force_pc'],
+    name = 'obesity-people',
+    data = ob_data,
+    columns = [' gcc_code16', ' ob_rate'],
     key_on = 'feature.properties.GCC_CODE16',
-    fill_color = 'YlOrRd',
-    fill_opacity = 0.7,
+    fill_color = 'YlOrBr',
+    fill_opacity = 0.5,
     line_opacity = 0.2,
-    legend_name = 'Unemployment Rate (%)',
-    bins = 8,
-    highlight = True
+    legend_name = 'Obese Rate(%)',
+    highlight = True,
 )
 
 folium.LayerControl().add_to(m)
 
-m.save('map_unemployment_rate.html')
+m.save('map_obesity.html')

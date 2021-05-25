@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html> 
+    <head>
+        <meta charset='utf-8'>
+        <title>OVERVIEW</title>
+        <script src="../static/js/jquery-3.6.0.min.js"></script>
+        <script src="../static/js/echarts.min.js"></script>
+        <script src="../static/js/index.js" type="text/javascript"></script>
+        <link rel="stylesheet" href="../static/css/vis.css">
+        <script type="text/javascript">
+        function click1(){
+            document.getElementById('c1').style.display="block";
+            document.getElementById('c2').style.display="none";
+            document.getElementById('c3').style.display="none";
+            document.getElementById('c4').style.display="none";
+        }
+        function click2(){
+            document.getElementById('c1').style.display="none";
+            document.getElementById('c2').style.display="block";
+            document.getElementById('c3').style.display="none";
+            document.getElementById('c4').style.display="none";
+        }
+        function click3(){
+            document.getElementById('c1').style.display="none";
+            document.getElementById('c2').style.display="none";
+            document.getElementById('c3').style.display="block";
+            document.getElementById('c4').style.display="none";
+        }
+        function click4(){
+            document.getElementById('c1').style.display="none";
+            document.getElementById('c2').style.display="none";
+            document.getElementById('c3').style.display="none";
+            document.getElementById('c4').style.display="block";
+        }
+            $(function(){
+                //hide subtitle
+                $(".nav-menu").each(function(){
+                    $(this).children(".nav-content").hide();
+                });
+                //funtion to click title
+                $(".nav-title").each(function(){
+                    $(this).click(function(){
+                        // find the subtitle of oriented title
+                       var navEle =  $(this).parents(".nav-menu").children(".nav-content");
+                       if(navEle.css("display")!="none"){
+                        //wrap
+                        navEle.slideUp(500);
+                       }else{
+                           //display
+                           navEle.slideDown(500);
+                       }
+                    });
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div class="content">
+            <div class="content-left">
+                <div class="left-title">
+                    <a href="#">COVID-19</a>
+                </div>
+                <div class="seg">
+
+                </div>
+                <div class="nav">
+                    <div class="nav-menu">
+                        <div class="nav-title">Tweets in Scenario</div>
+                        <div class="nav-content" >
+                            <a href="#" class="selected" onclick="click1()">Percentage</a>
+                        </div>
+                    </div>
+                    <div class="nav-menu">
+                        <div class="nav-title">Sentiment Score</div>
+                        <div class="nav-content" >
+                            <a href="#" onclick="click2()">All Tweets</a>
+                            <a href="#" onclick="click3()">Tweets with COVID-19</a>   
+                            <a href="#" onclick="click4()">Tweets with COVID & Vaccine</a> 
+                        </div>
+                    </div>
+                    <div class="nav-menu">
+                        <div class="nav-title">Data Analysis</div>
+                        <div class="nav-content">
+                            <a href="#" onclick="click5()">Sentiment</a>
+                            <a href="#" onclick="click6()">Infection Rate</a>  
+                        </div>
+                    </div>
+                </div>
+                <div class="seg"></div>
+            </div>
+            <div class="content-right">
+                <div class="lang">
+                    <div id="covid-percentage" style="width: 50%; height: 300px;">2</div>
+                </div>
+
+                
+            </div>
+        </div>
+
+        <script src="../echarts/covid-perc.js"></script>
+
+    </body>
+</html>

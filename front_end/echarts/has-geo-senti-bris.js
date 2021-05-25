@@ -1,14 +1,14 @@
 /* jshint strict: false */
 
-var total_score_cv = echarts.init(document.getElementById('total-senti-cv'));
-total_score_cv.showLoading();
-$.getJSON('../data/covid_vaccine_senti_analysis.json', function (jsondata) {
+var bris_score_g = echarts.init(document.getElementById('brisbane-g'));
+bris_score_g.showLoading();
+$.getJSON('../data/has_geo_senti_analysis.json', function (jsondata) {
     console.log(JSON.stringify(jsondata));
-    total_score_cv.hideLoading()
-    var index = "6"
-    var total_score_cv_option = {
+    bris_score_g.hideLoading()
+    var index = "3"
+    var bris_score_g_option = {
         title: {
-            text: "Total",
+            text: jsondata[index]["gcc_name16"],
             left: 'center'
         },
         tooltip: {
@@ -39,5 +39,5 @@ $.getJSON('../data/covid_vaccine_senti_analysis.json', function (jsondata) {
         ]
     };
 
-    total_score_cv.setOption(total_score_cv_option);
+    bris_score_g.setOption(bris_score_g_option);
 });

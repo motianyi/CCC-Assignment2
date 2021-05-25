@@ -1,0 +1,7 @@
+﻿location, cases, recovered, deaths, gcc_code16
+"Victoria",20549,19719,820,"2GMEL"
+"New South Wales",5572,5470,54,"1GSYD"
+"Queensland",1605,1578,7,"3GBRI"
+"Western Australia",1016,1003,9,"5GPER"
+"South Australia",748,742,4,"4GADE"
+"Australian Capital Territory",124,121,3,"8ACTE"

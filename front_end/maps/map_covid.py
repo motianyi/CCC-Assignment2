@@ -1,15 +1,15 @@
-from folium.features import Choropleth, ColorLine
+from folium.features import Choropleth, ColorLine, Vega
 import pandas as pd
 import folium
 import os
 import numpy as np
+from folium import IFrame
 
 tooltip = 'click for details'
 
 greater_city = os.path.join('../data', 'greater_capital_city.geojson')
-occupation = os.path.join('../data', 'employment_by_occupation.csv')
-# pass total people data to city_data
-healthcare_occupation = pd.read_csv(occupation, usecols=np.arange(0,7))
+covid = os.path.join('../data', 'covid-19.csv')
+covid_data = pd.read_csv(covid, usecols=np.arange(0,5))
 
 m = folium.Map(location=[-35.282001, 149.128998], zoom_start=6)
 
@@ -20,27 +20,26 @@ df = pd.DataFrame({
     'longitude': [144.946457, 151.209900, 138.599503, 153.021072, 149.128998, 115.857048],
 })
 for i, row in df.iterrows():
-    folium.Marker(
+        folium.Marker(
         location=[row['latitude'], row['longitude']],
-        popup=row['city'],
-        tooltip=tooltip,
-        icon=folium.Icon(color='gray')
-    ).add_to(m)
+        icon=folium.Icon(color='cadetblue'),
+        radius=6,
+        fill_color='yellow', 
+        tooltip=row['city']).add_to(m)
 
 m.choropleth(
     geo_data = greater_city,
-    name = 'Healthcare Occupation',
-    data = healthcare_occupation,
-    columns = [' gcc_code16', ' hlth_care_soc_tot'],
+    name = 'covid-people',
+    data = covid_data,
+    columns = [' gcc_code16', ' cases'],
     key_on = 'feature.properties.GCC_CODE16',
-    fill_color = 'YlGnBu',
-    fill_opacity = 0.7,
+    fill_color = 'YlOrRd',
+    fill_opacity = 0.5,
     line_opacity = 0.2,
-    legend_name = 'Employment in Health Care',
-    bins = 8,
-    highlight = True
+    legend_name = 'COVID numbers',
+    highlight = True,
 )
 
 folium.LayerControl().add_to(m)
 
-m.save('map_healthcare_occupation.html')
+m.save('map_covid.html')

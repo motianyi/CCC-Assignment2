@@ -2,17 +2,22 @@
 
 var total_score = echarts.init(document.getElementById('total-senti'));
 total_score.showLoading();
+
 $.getJSON('../data/all_senti_analysis.json', function (jsondata) {
+
     console.log(JSON.stringify(jsondata));
+
     total_score.hideLoading()
-    var index = "6"
+
+    var index = "1"
     var total_score_option = {
         title: {
-            text: "Total",
+            text: jsondata[index]["gcc_name16"],
             left: 'center'
         },
         tooltip: {
-            trigger: 'item'
+            trigger: 'item',
+            confine: true
         },
         legend: {
             orient: 'vertical',
@@ -20,7 +25,7 @@ $.getJSON('../data/all_senti_analysis.json', function (jsondata) {
         },
         series: [
             {
-                name: 'tweets/total tweets(%)',
+                name: 'total tweets',
                 type: 'pie',
                 radius: '50%',
                 data: [
@@ -28,13 +33,13 @@ $.getJSON('../data/all_senti_analysis.json', function (jsondata) {
                     {value: jsondata[index]["num_neg"], name: 'negative'},
                     {value: jsondata[index]["num_neu"], name: 'neutral'}
                 ],
-                emphasis: {
-                    itemStyle: {
-                        shadowBlur: 10,
-                        shadowOffsetX: 0,
-                        shadowColor: 'rgba(0, 0, 0, 0.5)'
-                    }
-                }
+                // emphasis: {
+                //     itemStyle: {
+                //         shadowBlur: 10,
+                //         shadowOffsetX: 0,
+                //         shadowColor: 'rgba(0, 0, 0, 0.5)'
+                //     }
+                // }
             }
         ]
     };

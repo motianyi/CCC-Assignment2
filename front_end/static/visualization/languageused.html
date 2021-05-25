@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<title>senti-score-visualization</title>
+		<script src="../static/js/jquery-3.6.0.min.js"></script>
+		<script src="../static/js/echarts.min.js"></script>
+		<style type="text/css">
+			body{
+				background: #D1D5E8;
+			}
+			.title{
+				display: flex;
+				justify-items: center;
+				align-items: center;
+			}
+		
+			.lang {
+				margin: 20px;
+				display: flex;
+                flex-direction: column;
+                align-items: center;
+			}
+		</style>
+		<body>
+			<div class="lang">
+				<div id="lang1" style="width: 60%; height: 300px;"></div>
+				<div id="lang2" style="width: 60%; height: 300px;"></div>
+			</div>
+			
+			<script src="../echarts/lang1.js"></script>
+			<script src="../echarts/lang2.js"></script>
+
+		</body>	
+</html>

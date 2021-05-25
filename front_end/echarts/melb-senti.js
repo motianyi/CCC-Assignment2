@@ -20,7 +20,7 @@ $.getJSON('../data/all_senti_analysis.json', function (jsondata) {
         },
         series: [
             {
-                name: 'tweets/total tweets(%)',
+                name: 'total tweets',
                 type: 'pie',
                 radius: '50%',
                 data: [
