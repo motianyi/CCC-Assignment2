@@ -84,3 +84,43 @@ This taks will execute ```webserver-deploy.yaml``` playbook whick consists of 5 
   - Pull the web server image form the docker hub
   - attach ```/home/ubuntu/data``` directory on virtual machine at ```/data``` directory inside the container. It will use the result produced by data analayer and show on the webpage.
  
+# File structure
+```
+.
+├── README.md
+├── db-create-instances.sh
+├── db-create-instances.yaml
+├── db-deploy.sh
+├── db-deploy.yaml
+├── deployall.sh
+├── harvester-deploy.sh
+├── harvester-deploy.yaml
+├── host_vars
+│   ├── mrc.yaml
+│   └── mrc_webserver.yaml
+├── inventory
+│   ├── inventory_file.ini
+│   └── inventory_webserver_file.ini
+├── key
+│   └── demo.pem
+├── roles
+│   ├── dependency
+│   ├── deploy-couchDB
+│   ├── deploy-couchDB-cluster
+│   ├── deploy-couchDB-grunt
+│   ├── deploy-data-analyzer
+│   ├── deploy-twitter-harvester
+│   ├── deploy-web-server
+│   ├── openstack-common
+│   ├── openstack-instance
+│   ├── openstack-security-group
+│   ├── openstack-volume
+│   ├── save-ip
+│   ├── set-up-docker-http-proxy
+│   └── set-up-http-proxy
+├── unimelb-comp90024-2021-grp-31-openrc.sh
+├── webserver-create-instances.sh
+├── webserver-create-instances.yaml
+├── webserver-deploy.sh
+└── webserver-deploy.yaml
+```
