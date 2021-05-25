@@ -1,6 +1,6 @@
 # CCC-Assignment2
 ## Ansible
-- We used ansible to automatically do the following tasks:
+We used ansible to automatically do the following tasks:
   - Setting up security group rules in the project
   - Managing the volumes and instances creation on the Melbourne Research Clouds
   - Installing dependencies and tools on the instances
@@ -10,7 +10,7 @@
   - Launching the Web Server.
 
 ## CouchDB
-- We created 4 different databases to store differnent for different scenario analysis.
+We created 4 different databases to store differnent for different scenario analysis.
   - all_twitter
   - beer_twitter
   - covid_twitter
