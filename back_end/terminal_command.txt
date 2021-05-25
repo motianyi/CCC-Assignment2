@@ -101,12 +101,14 @@ scp -i demo.pem -r ./twitter_covid_search_with_docker ubuntu@172.26.128.223:
 scp -i demo.pem -r ./twitter_income_search_with_docker ubuntu@172.26.128.223:
 scp -i demo.pem -r ./twitter_beer_search_with_docker ubuntu@172.26.128.223:
 scp -i demo.pem -r ./twitter_stream_harvest_with_docker ubuntu@172.26.128.223:
+scp -i demo.pem -r ./user_timeline_search_with_docker ubuntu@172.26.128.223:
 
 #build docker image
 sudo docker build -t twitter_covid_search .
 sudo docker build -t twitter_income_search .
 sudo docker build -t twitter_beer_search .
 sudo docker build -t twitter_stream_harvest .
+sudo docker build -t user_timeline_search .
 
 
 #tag docker image
@@ -114,25 +116,30 @@ sudo docker tag twitter_covid_search:latest hh1752756228/twitter_covid_search:v1
 sudo docker tag twitter_income_search:latest hh1752756228/twitter_income_search:v1
 sudo docker tag twitter_beer_search:latest hh1752756228/twitter_beer_search:v1
 sudo docker tag twitter_stream_harvest:latest hh1752756228/twitter_stream_harvest:v1
-
+sudo docker tag user_timeline_search:latest hh1752756228/user_timeline_search:v1
 
 #remove old image
 sudo docker rmi twitter_covid_search
 sudo docker rmi twitter_income_search
 sudo docker rmi twitter_beer_search
 sudo docker rmi twitter_stream_harvest
+sudo docker rmi user_timeline_search
+
 
 #push docker image to docker hub
 sudo docker push hh1752756228/twitter_covid_search:v1
 sudo docker push hh1752756228/twitter_income_search:v1
 sudo docker push hh1752756228/twitter_beer_search:v1
 sudo docker push hh1752756228/twitter_stream_harvest:v1
+sudo docker push hh1752756228/user_timeline_search:v1
 
 #build and run docker container
 sudo docker run -d --name=twitter_covid_search hh1752756228/twitter_covid_search:v1
 sudo docker run -d --name=twitter_income_search hh1752756228/twitter_income_search:v1
 sudo docker run -d --name=twitter_beer_search hh1752756228/twitter_beer_search:v1
 sudo docker run -d --name=twitter_stream_harvest hh1752756228/twitter_stream_harvest:v1
+sudo docker run -d --name=user_timeline_search hh1752756228/user_timeline_search:v1
+
 ##################################################
 
 
@@ -142,7 +149,7 @@ sudo docker run -d --name=twitter_stream_harvest hh1752756228/twitter_stream_har
 ssh -i demo.pem ubuntu@172.26.128.223
 
 #copy local file to MRC
-scp -i demo.pem -r ./sentiment_analysis ubuntu@172.26.128.223:
+scp -i demo.pem -r ./data_analysis ubuntu@172.26.128.223:
 
 #build docker image
 sudo docker build -t twitter_analysis .
@@ -156,6 +163,9 @@ sudo docker rmi twitter_analysis
 #push docker image to docker hub
 sudo docker push hh1752756228/twitter_analysis:v1
 
+#pull docker images from docker hub
+sudo docker pull hh1752756228/twitter_analysis:v1
+
 #make data dir
 sudo mkdir data
 
@@ -165,5 +175,5 @@ sudo docker run -d -v ~/data:/code/data --name=twitter_analysis hh1752756228/twi
 
 sudo docker run -it -v ~/data:/code/data --name=test hh1752756228/twitter_analysis:v1 bash
 
-
+sudo docker run -it  --name=test hh1752756228/user_timeline_search:v1 bash
 sudo docker start -it  -v ~/data:/code/data --name=twitter_analysis hh1752756228/twitter_analysis:v1 bash
