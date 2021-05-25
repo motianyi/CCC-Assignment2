@@ -28,8 +28,8 @@ sh ./webserver-create-instances.sh
 sh ./webserver-deploy.sh
 ```
 
-# Desctiption of each task
-## Creating instances for database and harvesters
+# Description of each task
+## 1. Creating instances for database and harvesters
 This taks will execute ```db-create-instances.yaml``` palybook which consists of four roles
 -   openstack-volume : 
     -   Creating the volumns used for each instances
@@ -42,7 +42,7 @@ This taks will execute ```db-create-instances.yaml``` palybook which consists of
     -   The ip address will be automatically saved in ```inventory/inventory_file.ini```. The file can be used in subsequent tasks to get the ip address of these instances and perform other operations on them.
 
 
-## Deploy couchDB database cluster
+## 2. Deploy couchDB database cluster
 This taks will execute ```db-deploy.yaml``` playbook whick consists of 6 roles. The instances used are load from ```inventory/inventory_file.ini```.
 -   set-up-http-proxy
     - Adding HTTP_PROXY, HTTPS_PROXY, and NO_PROXY in ```/etc/environment``` directory on the instances so that the instance is able to access Internet and download dependencies.
@@ -56,15 +56,15 @@ This taks will execute ```db-deploy.yaml``` playbook whick consists of 6 roles. 
 - deploy-couchDB-cluster
     - Set up the couchDB cluster by through the RESTful API, by default, the first node in the instance list is the master node of the cluster.
 - deploy-couchDB-grunt
-    - run “couch-compile” script, which processes the Couch Directory Tree, and the 
+    - run “couch-compile” script, which processes the Couch Directory Tree
     - run“couch-push” script, which pushes the compiled documents to our couchdb database on MRC instances.
 
-## Deploy twitter harvester
+## 3. Deploy twitter harvester
 This taks will execute ```harvester-deploy.yaml``` playbook whick consists of 6 roles. The instances used are load from ```inventory/inventory_file.ini```.
 - deploy-twitter-harvester
     - Pull the twitter harvester image from docker hub and restart the container
 
-## Creating instances for webserver and data analyzer
+## 4. Creating instances for webserver and data analyzer
 This taks will execute ```webserver-create-instances.yaml``` palybook, similar to "Creating instances for database and harvesters", it will creare volumns, security group and the instace. However, it wil save the ip address in a different file
 -   openstack-volume : 
 -   openstack-security-group
@@ -72,7 +72,7 @@ This taks will execute ```webserver-create-instances.yaml``` palybook, similar t
 -   save-ip: 
     - The ip address will be automatically saved in ```inventory/inventory_webserver.ini```. The file can be used in subsequent tasks to get the ip address of these instances and perform other operations on them.
   
-## Deploy the webserver and data analyzer
+## 5. Deploy the webserver and data analyzer
 This taks will execute ```webserver-deploy.yaml``` playbook whick consists of 5 roles. The instances used are load from ```inventory/inventory_webserver.ini```.
 - set-up-http-proxy
 - dependency
