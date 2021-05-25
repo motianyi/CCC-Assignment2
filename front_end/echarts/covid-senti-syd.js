@@ -20,7 +20,7 @@ $.getJSON('../data/covid_senti_analysis.json', function (jsondata) {
         },
         series: [
             {
-                name: 'tweets/total tweets(%)',
+                name: 'Tweets Number',
                 type: 'pie',
                 radius: '50%',
                 data: [

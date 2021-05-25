@@ -14,29 +14,21 @@ app = Flask(__name__,
 def index():
     return render_template('home.html')
 
-@app.route('/senti-visual.html')
-def senti():
-    return render_template('senti-visual.html')
-
-@app.route('/covid.html')
-def covid():
-    return render_template('covid.html')
-
-@app.route('/heal-con.html')
-def heal():
-    return render_template('heal-con.html')
-
-@app.route('/income.html')
-def income():
-    return render_template('income.html')
-
-@app.route('/ente.html')
-def ente():
-    return render_template('ente.html')
-
-@app.route('/overview.html')
+@app.route('/overview-visualization.html')
 def overview():
-    return render_template('overview.html')
+    return render_template('overview-visualization.html')
+
+@app.route('/covid-visualization.html')
+def covid():
+    return render_template('covid-visualization.html')
+
+@app.route('/health-visualization.html')
+def health():
+    return render_template('health-visualization.html')
+
+@app.route('/financial-visualization.html')
+def financial():
+    return render_template('financial-visualization.html')
 
 if __name__ == '__main__':
     app.run(debug = True)

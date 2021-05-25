@@ -2,6 +2,11 @@
 
 var lang1 = echarts.init(document.getElementById('lang1'));
 
+lang1.showLoading();
+$.getJSON('../data/language_count.json', function (jsondata) {
+    console.log(JSON.stringify(jsondata));
+    lang1.hideLoading()
+    var index = "1"
 var lang1_option = {
     title: {
         text: 'English vs Others',
@@ -20,8 +25,8 @@ var lang1_option = {
             type: 'pie',
             radius: '50%',
             data: [
-                {value: 24223, name: 'Others'},
-                {value: 150829, name: 'English'},
+                {value: jsondata[index]["English"], name: 'English'},
+                {value: 1-jsondata[index]["English"], name: 'Others'},
             ],
             emphasis: {
                 itemStyle: {
@@ -35,3 +40,5 @@ var lang1_option = {
 };
 
 lang1.setOption(lang1_option);
+
+});

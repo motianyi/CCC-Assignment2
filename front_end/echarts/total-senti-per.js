@@ -1,12 +1,12 @@
 /* jshint strict: false */
 
-var aus_score_g = echarts.init(document.getElementById('total-senti-g'));
-aus_score_g.showLoading();
-$.getJSON('../data/has_geo_senti_analysis.json', function (jsondata) {
+var per_score = echarts.init(document.getElementById('perth'));
+per_score.showLoading();
+$.getJSON('../data/all_senti_analysis.json', function (jsondata) {
     console.log(JSON.stringify(jsondata));
-    aus_score_g.hideLoading()
-    var index = "6"
-    var aus_score_g_option = {
+    per_score.hideLoading()
+    var index = "4"
+    var per_score_option = {
         title: {
             text: jsondata[index]["gcc_name16"],
             left: 'center'
@@ -20,7 +20,7 @@ $.getJSON('../data/has_geo_senti_analysis.json', function (jsondata) {
         },
         series: [
             {
-                name: 'Tweets Number',
+                name: 'tweets number',
                 type: 'pie',
                 radius: '50%',
                 data: [
@@ -39,5 +39,5 @@ $.getJSON('../data/has_geo_senti_analysis.json', function (jsondata) {
         ]
     };
 
-    aus_score_g.setOption(aus_score_g_option);
+    per_score.setOption(per_score_option);
 });

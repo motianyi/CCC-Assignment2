@@ -1,12 +1,12 @@
 /* jshint strict: false */
 
-var bris_score = echarts.init(document.getElementById('brisbane'));
-bris_score.showLoading();
-$.getJSON('../data/all_senti_analysis.json', function (jsondata) {
+var canb_score_i = echarts.init(document.getElementById('canberra-i'));
+canb_score_i.showLoading();
+$.getJSON('../data/income_analysis.json', function (jsondata) {
     console.log(JSON.stringify(jsondata));
-    bris_score.hideLoading()
-    var index = "2"
-    var bris_score_option = {
+    canb_score_i.hideLoading()
+    var index = "5"
+    var canb_score_i_option = {
         title: {
             text: jsondata[index]["gcc_name16"],
             left: 'center'
@@ -20,7 +20,7 @@ $.getJSON('../data/all_senti_analysis.json', function (jsondata) {
         },
         series: [
             {
-                name: 'total tweets',
+                name: 'Tweets Number',
                 type: 'pie',
                 radius: '50%',
                 data: [
@@ -39,5 +39,5 @@ $.getJSON('../data/all_senti_analysis.json', function (jsondata) {
         ]
     };
 
-    bris_score.setOption(bris_score_option);
+    canb_score_i.setOption(canb_score_i_option);
 });

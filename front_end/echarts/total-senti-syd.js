@@ -1,12 +1,12 @@
 /* jshint strict: false */
 
-var adel_score = echarts.init(document.getElementById('adelaide'));
-adel_score.showLoading();
+var syd_score = echarts.init(document.getElementById('sydney'));
+syd_score.showLoading();
 $.getJSON('../data/all_senti_analysis.json', function (jsondata) {
     console.log(JSON.stringify(jsondata));
-    adel_score.hideLoading()
-    var index = "3"
-    var adel_score_option = {
+    syd_score.hideLoading()
+    var index = "1"
+    var syd_score_option = {
         title: {
             text: jsondata[index]["gcc_name16"],
             left: 'center'
@@ -20,7 +20,7 @@ $.getJSON('../data/all_senti_analysis.json', function (jsondata) {
         },
         series: [
             {
-                name: 'total tweets',
+                name: 'Tweets Number',
                 type: 'pie',
                 radius: '50%',
                 data: [
@@ -39,5 +39,5 @@ $.getJSON('../data/all_senti_analysis.json', function (jsondata) {
         ]
     };
 
-    adel_score.setOption(adel_score_option);
+    syd_score.setOption(syd_score_option);
 });

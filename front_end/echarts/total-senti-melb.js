@@ -1,12 +1,12 @@
 /* jshint strict: false */
 
-var aus_score_g = echarts.init(document.getElementById('total-senti-g'));
-aus_score_g.showLoading();
-$.getJSON('../data/has_geo_senti_analysis.json', function (jsondata) {
+var melb_score = echarts.init(document.getElementById('melbourne'));
+melb_score.showLoading();
+$.getJSON('../data/all_senti_analysis.json', function (jsondata) {
     console.log(JSON.stringify(jsondata));
-    aus_score_g.hideLoading()
-    var index = "6"
-    var aus_score_g_option = {
+    melb_score.hideLoading()
+    var index = "0"
+    var melb_score_option = {
         title: {
             text: jsondata[index]["gcc_name16"],
             left: 'center'
@@ -39,5 +39,5 @@ $.getJSON('../data/has_geo_senti_analysis.json', function (jsondata) {
         ]
     };
 
-    aus_score_g.setOption(aus_score_g_option);
+    melb_score.setOption(melb_score_option);
 });

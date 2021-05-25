@@ -5,7 +5,7 @@ syd_score_g.showLoading();
 $.getJSON('../data/has_geo_senti_analysis.json', function (jsondata) {
     console.log(JSON.stringify(jsondata));
     syd_score_g.hideLoading()
-    var index = "3"
+    var index = "1"
     var syd_score_g_option = {
         title: {
             text: jsondata[index]["gcc_name16"],
@@ -20,7 +20,7 @@ $.getJSON('../data/has_geo_senti_analysis.json', function (jsondata) {
         },
         series: [
             {
-                name: 'total tweets',
+                name: 'Tweets Number',
                 type: 'pie',
                 radius: '50%',
                 data: [

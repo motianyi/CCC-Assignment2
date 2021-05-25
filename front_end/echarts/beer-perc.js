@@ -1,14 +1,14 @@
 /* jshint strict: false */
 
-var covid_perc = echarts.init(document.getElementById('covid-percentage'));
-covid_perc.showLoading();
+var beer_perc = echarts.init(document.getElementById('beer-percentage'));
+beer_perc.showLoading();
 $.getJSON('../data/senario_percentage.json', function (jsondata) {
     console.log(JSON.stringify(jsondata));
-    covid_perc.hideLoading()
-    var index = "0"
-    var covid_perc_option = {
+    beer_perc.hideLoading()
+    var index = "3"
+    var beer_perc_option = {
     title: {
-        text: 'COVID Related Tweets',
+        text: 'Beer Related Tweets',
         left: 'center'
     },
     tooltip: {
@@ -24,7 +24,7 @@ $.getJSON('../data/senario_percentage.json', function (jsondata) {
             type: 'pie',
             radius: '50%',
             data: [
-                {value: jsondata[index]['percentage'], name: 'Covid'},
+                {value: jsondata[index]['percentage'], name: 'Beer'},
                 {value: 1-jsondata[index]['percentage'], name: 'Others'},
             ],
             emphasis: {
@@ -38,5 +38,5 @@ $.getJSON('../data/senario_percentage.json', function (jsondata) {
     ]
 };
 
-covid_perc.setOption(covid_perc_option);
+beer_perc.setOption(beer_perc_option);
 });

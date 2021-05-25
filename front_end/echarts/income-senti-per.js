@@ -1,12 +1,12 @@
 /* jshint strict: false */
 
-var per_score = echarts.init(document.getElementById('perth'));
-per_score.showLoading();
-$.getJSON('../data/all_senti_analysis.json', function (jsondata) {
+var per_score_i = echarts.init(document.getElementById('perth-i'));
+per_score_i.showLoading();
+$.getJSON('../data/income_analysis.json', function (jsondata) {
     console.log(JSON.stringify(jsondata));
-    per_score.hideLoading()
+    per_score_i.hideLoading()
     var index = "4"
-    var per_score_option = {
+    var per_score_i_option = {
         title: {
             text: jsondata[index]["gcc_name16"],
             left: 'center'
@@ -20,7 +20,7 @@ $.getJSON('../data/all_senti_analysis.json', function (jsondata) {
         },
         series: [
             {
-                name: 'total tweets',
+                name: 'tweets number',
                 type: 'pie',
                 radius: '50%',
                 data: [
@@ -39,5 +39,5 @@ $.getJSON('../data/all_senti_analysis.json', function (jsondata) {
         ]
     };
 
-    per_score.setOption(per_score_option);
+    per_score_i.setOption(per_score_i_option);
 });

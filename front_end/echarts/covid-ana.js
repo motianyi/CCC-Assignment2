@@ -1,68 +1,79 @@
-/* jshint strict: false */
+// var total_senti = '../data/all_senti_analysis.json';
+// var senti_c = '../data/covid_senti_analysis.json';
+// var senti_cv = '../data/covid_vaccine_senti_analysis.json';
 
-var covid_ana = echarts.init(document.getElementById('covid-ana'));
-covid_ana.showLoading();
-$.getJSON('../data/all_senti_analysis.json', function (jsondata) {
-    console.log(JSON.stringify(jsondata));
-    var city = []
-    var value = []
-    var tweets = []
-    for (const key in jsondata){
-        if(jsondata.hasOwnProperty(key)){
-        //   console.log(`${key} : ${res[key]}`)
-          city.push(jsondata[key]["gcc_name16"])
-          value.push(jsondata[key]["senti_score"])
-          tweets.push(jsondata[key]["tweets_count"])
-        }
-    }
-    console.log(city);
+var covid_ana = echarts.init(document.getElementById('covid-ana'))
 
-    covid_ana.hideLoading()
-    var covid_ana_option = {
-    title: {
-        text: 'Sentiment Score'
-    },
+var covid_ana_option = {
     tooltip: {
-        trigger: 'axis'
+        trigger: 'axis',
+        axisPointer: {
+            type: 'cross',
+            crossStyle: {
+                color: '#999'
+            }
+        }
     },
     legend: {
-        data: ['total tweets', 'covid tweets', 'covid & vaccine tweets']
+        data: ['Infected Cases', 'Score in All Tweets', 'Score in Tweets with COVID', 'Score in Tweets with COVID and Vaccine']
     },
-    grid: {
-        left: '3%',
-        right: '4%',
-        bottom: '3%',
-        containLabel: true
-    },
-    xAxis: {
-        type: 'category',
-        boundaryGap: false,
-        data: city
-    },
-    yAxis: {
-        type: value
-    },
+    xAxis: [
+        {
+            type: 'category',
+            data: ['Greater Melbourne', 'Greater Sydney', 'Australian Capital Territory', 'Greater Brisbane', 'Greater Adelaide', 'Greater Perth'],
+            axisPointer: {
+                type: 'shadow'
+            }
+        }
+    ],
+    yAxis: [
+        {
+            type: 'value',
+            name: 'Infected Cases',
+            min: 0,
+            max: 25000,
+            interval: 5000,
+            axisLabel: {
+                formatter: '{value}'
+            }
+        },
+        {
+            type: 'value',
+            name: 'Sentiment Score',
+            min: -0.4,
+            max: 1,
+            interval: 0.2,
+            axisLabel: {
+                formatter: '{value}'
+            }
+        }
+    ],
     series: [
         {
-            name: 'total tweets',
-            type: 'line',
-            stack: 'score',
-            data: tweets
+            name: 'Infected Cases',
+            type: 'bar',
+            data: [ 20549, 5572, 124, 1605, 748, 1016]
         },
         {
-            name: 'covid tweets',
+            name: 'Score in All Tweets',
             type: 'line',
-            stack: 'score',
-            data: [220, 182, 191, 234, 290, 330, 310]
+            yAxisIndex: 1,
+            data: [0.65, 0.60, 0.83, 0.66, 0.81, 0.67]
         },
         {
-            name: 'covid & vaccine tweets',
+            name: 'Score in Tweets with COVID',
             type: 'line',
-            stack: 'score',
-            data: [150, 232, 201, 154, 190, 330, 410]
+            yAxisIndex: 1,
+            data: [0.50, 0.18, 0.30, 0.46, 0.28, -0.13]
         },
+        {
+            name: 'Score in Tweets with COVID and Vaccine',
+            type: 'line',
+            yAxisIndex: 1,
+            data: [-0.32, -0.19, -0.35, -0.20, 0.13, -0.23]
+        }
     ]
 };
 
-    covid_ana.setOption(covid_ana_option);
-});
+covid_ana.setOption(covid_ana_option);
+

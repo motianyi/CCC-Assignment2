@@ -36,7 +36,7 @@ m.choropleth(
     fill_color = 'YlOrRd',
     fill_opacity = 0.5,
     line_opacity = 0.2,
-    legend_name = 'COVID numbers',
+    legend_name = 'Infected Cases',
     highlight = True,
 )
 

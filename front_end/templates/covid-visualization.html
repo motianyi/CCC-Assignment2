@@ -2,7 +2,7 @@
 <html> 
     <head>
         <meta charset='utf-8'>
-        <title>OVERVIEW</title>
+        <title>COVID-19</title>
         <script src="../static/js/jquery-3.6.0.min.js"></script>
         <script src="../static/js/echarts.min.js"></script>
         <script src="../static/js/index.js" type="text/javascript"></script>
@@ -13,24 +13,35 @@
             document.getElementById('c2').style.display="none";
             document.getElementById('c3').style.display="none";
             document.getElementById('c4').style.display="none";
+            document.getElementById('c5').style.display="none";
         }
         function click2(){
             document.getElementById('c1').style.display="none";
             document.getElementById('c2').style.display="block";
             document.getElementById('c3').style.display="none";
             document.getElementById('c4').style.display="none";
+            document.getElementById('c5').style.display="none";
         }
         function click3(){
             document.getElementById('c1').style.display="none";
             document.getElementById('c2').style.display="none";
             document.getElementById('c3').style.display="block";
             document.getElementById('c4').style.display="none";
+            document.getElementById('c5').style.display="none";
         }
         function click4(){
             document.getElementById('c1').style.display="none";
             document.getElementById('c2').style.display="none";
             document.getElementById('c3').style.display="none";
             document.getElementById('c4').style.display="block";
+            document.getElementById('c5').style.display="none";
+        }
+        function click5(){
+            document.getElementById('c1').style.display="none";
+            document.getElementById('c2').style.display="none";
+            document.getElementById('c3').style.display="none";
+            document.getElementById('c4').style.display="none";
+            document.getElementById('c5').style.display="block";
         }
             $(function(){
                 //hide subtitle
@@ -65,39 +76,115 @@
                 </div>
                 <div class="nav">
                     <div class="nav-menu">
-                        <div class="nav-title">Tweets in Scenario</div>
+                        <div class="nav-title">Percentage</div>
                         <div class="nav-content" >
-                            <a href="#" class="selected" onclick="click1()">Percentage</a>
+                            <a href="#" class="selected" onclick="click1()">Proportion in All Tweets</a>
                         </div>
                     </div>
                     <div class="nav-menu">
                         <div class="nav-title">Sentiment Score</div>
                         <div class="nav-content" >
                             <a href="#" onclick="click2()">All Tweets</a>
-                            <a href="#" onclick="click3()">Tweets with COVID-19</a>   
-                            <a href="#" onclick="click4()">Tweets with COVID & Vaccine</a> 
+                            <a href="#" onclick="click3()">Tweets with COVID</a>
+                            <a href="#" onclick="click4()">Tweets with COVID and Vaccine</a>    
                         </div>
                     </div>
                     <div class="nav-menu">
                         <div class="nav-title">Data Analysis</div>
                         <div class="nav-content">
-                            <a href="#" onclick="click5()">Sentiment</a>
-                            <a href="#" onclick="click6()">Infection Rate</a>  
+                            <a href="#" onclick="click5()">Comparison</a>  
                         </div>
                     </div>
                 </div>
                 <div class="seg"></div>
             </div>
             <div class="content-right">
-                <div class="lang">
-                    <div id="covid-percentage" style="width: 50%; height: 300px;">2</div>
+                <div class="lang" id="c1" style="display:block;">
+                    <div class="label">
+                        <h1>Percentage of COVID-19 Related Tweets</h1>
+                    </div>
+                    <div id="covid-percentage" style="width: 50%; height: 600px;"></div>
                 </div>
 
+                <div id="c2" style="display: block;">
+                    <div class="label">
+                        <h1>Sentiment Score in All Tweets</h1>
+                    </div>
+                    <div class="grid">
+                        <div id="total-senti" class="box0" style="width: 50%; height: 300px;"></div>
+                        <div id="melbourne" class="box1" style="width: 100%; height: 280px;">1</div>
+                        <div id="sydney" class="box2" style="width: 100%; height: 280px;">2</div>
+                        <div id="canberra" class="box3" style="width: 100%; height: 280px;">3</div>
+                        <div id="brisbane" class="box4" style="width: 100%; height: 280px;">4</div>
+                        <div id="adelaide" class="box5" style="width: 100%; height: 280px;">5</div>
+                        <div id="perth" class="box6" style="width: 100%; height: 280px;">6</div>
+                    </div>	
+                </div>
                 
+                <div id="c3" style="display: block;">
+                    <div class="label">
+                        <h1>Sentiment Scores in Tweets with COVID</h1>
+                    </div>
+                    <div class="grid1">
+                        <div id="total-senti-c" class="box00" style="width: 50%; height: 300px;"></div>
+                        <div id="melbourne-c" class="box11" style="width: 100%; height: 280px;">1</div>
+                        <div id="sydney-c" class="box22" style="width: 100%; height: 280px;">2</div>
+                        <div id="canberra-c" class="box33" style="width: 100%; height: 280px;">3</div>
+                        <div id="brisbane-c" class="box44" style="width: 100%; height: 280px;">4</div>
+                        <div id="adelaide-c" class="box55" style="width: 100%; height: 280px;">5</div>
+                        <div id="perth-c" class="box66" style="width: 100%; height: 280px;">6</div>
+                    </div>
+                </div>
+
+                <div id="c4" style="display: block;">
+                    <div class="label">
+                        <h1>Sentiment Scores in Tweets with COVID and Vaccine</h1>
+                    </div>
+                    <div class="grid2">
+                        <div id="total-senti-cv" class="box000" style="width: 50%; height: 300px;"></div>
+                        <div id="melbourne-cv" class="box111" style="width: 100%; height: 280px;">1</div>
+                        <div id="sydney-cv" class="box222" style="width: 100%; height: 280px;">2</div>
+                        <div id="canberra-cv" class="box333" style="width: 100%; height: 280px;">3</div>
+                        <div id="brisbane-cv" class="box444" style="width: 100%; height: 280px;">4</div>
+                        <div id="adelaide-cv" class="box555" style="width: 100%; height: 280px;">5</div>
+                        <div id="perth-cv" class="box666" style="width: 100%; height: 280px;">6</div>
+                    </div>
+                </div>
+                
+                <div id="c5" style="display: block;">
+                    <div class="label">
+                        <h1>How COVID and Vaccine Affect Tweeters?</h1>
+                    </div>
+                    <div id="covid-ana" style="width: 90%; height: 580px;">geo-senti</div>
+                </div>
+                </div>
+
+                <script src="../echarts/covid-tot.js"></script>
+			    <script src="../echarts/covid-perc.js"></script>
+                <script src="../echarts/total-senti.js"></script>
+                <script src="../echarts/total-senti-adel.js"></script>
+                <script src="../echarts/total-senti-bris.js"></script>
+                <script src="../echarts/total-senti-canb.js"></script>
+                <script src="../echarts/total-senti-melb.js"></script>
+                <script src="../echarts/total-senti-per.js"></script>
+                <script src="../echarts/total-senti-syd.js"></script>
+                <script src="../echarts/covid-senti-aus.js"></script>
+                <script src="../echarts/covid-senti-adel.js"></script>
+                <script src="../echarts/covid-senti-bris.js"></script>
+                <script src="../echarts/covid-senti-canb.js"></script>
+                <script src="../echarts/covid-senti-melb.js"></script>
+                <script src="../echarts/covid-senti-per.js"></script>
+                <script src="../echarts/covid-senti-syd.js"></script>
+                <script src="../echarts/covid-vac-senti-adel.js"></script>
+                <script src="../echarts/covid-vac-senti-aus.js"></script>
+                <script src="../echarts/covid-vac-senti-bris.js"></script>
+                <script src="../echarts/covid-vac-senti-canb.js"></script>
+                <script src="../echarts/covid-vac-senti-melb.js"></script>
+                <script src="../echarts/covid-vac-senti-per.js"></script>
+                <script src="../echarts/covid-vac-senti-syd.js"></script>
+                <script src="../echarts/covid-ana.js"></script>
             </div>
         </div>
-
-        <script src="../echarts/covid-perc.js"></script>
 
     </body>
 </html>
