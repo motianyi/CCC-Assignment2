@@ -66,7 +66,7 @@ This task will execute ```harvester-deploy.yaml``` playbook which consists of 1 
     - logout from docker hub
     
 ## Creating instances for webserver and data analyzer
-This task will execute ```webserver-.yaml``` playbook which consists of 4 roles
+This task will execute ```webserver-create-instances.yaml``` playbook which consists of 4 roles
 - openstack-volume
     - Creating the volumns used for each instances
 - openstack-security-group
@@ -77,7 +77,7 @@ This task will execute ```webserver-.yaml``` playbook which consists of 4 roles
     - The ip address will be automatically saved in ```inventory/inventory_file.ini```.
 
 ## Deploy the webserver and data analyzer
-This task will execute ```webserver-.yaml``` playbook which consists of 5 roles
+This task will execute ```webserver-deploy.yaml``` playbook which consists of 5 roles
 - set-up-http-proxy
     - Adding HTTP_PROXY, HTTPS_PROXY, and NO_PROXY in ```/etc/environment``` directory on the instances so that the instance is able to access Internet and download dependencies.
 - dependency
