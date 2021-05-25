@@ -19,10 +19,10 @@ sh ./db-deploy.sh
 # Deploy twitter harvester
 sh ./harvester-deploy.sh
 
-# Creating instances for database and harvesters
+# Creating instances for webserver and data analyzer
 sh ./webserver-create-instances.sh
 
-# Deploy the webserver
+# Deploy the webserver and data analyzer
 sh ./webserver-deploy.sh
 ```
 
@@ -53,3 +53,12 @@ This taks will execute ```db-deploy.yaml``` playbook whick consists of 6 roles. 
     - Pull the couchDB image from and start docker container for couchDB
 - deploy-couchDB-cluster
     - Set up the couchDB cluster by through the RESTful API, by default, the first node in the instance list is the master node of the cluster.
+- deploy-couchDB-grunt
+    - run “couch-compile” script, which processes the Couch Directory Tree, and the 
+    - run“couch-push” script, which pushes the compiled documents to our couchdb database on MRC instances.
+
+## Deploy twitter harvester
+
+## Creating instances for webserver and data analyzer
+
+## Deploy the webserver and data analyzer
