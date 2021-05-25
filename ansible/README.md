@@ -26,7 +26,7 @@ sh ./webserver-create-instances.sh
 sh ./webserver-deploy.sh
 ```
 
-# Desctiption of each task
+# Description of each task
 ## Creating instances for database and harvesters
 This taks will execute ```db-create-instances.yaml``` palybook which consists of four roles
 -   openstack-volume : 
@@ -58,6 +58,8 @@ This taks will execute ```db-deploy.yaml``` playbook whick consists of 6 roles. 
     - run“couch-push” script, which pushes the compiled documents to our couchdb database on MRC instances.
 
 ## Deploy twitter harvester
+The twitter harvest can be deployed by pulling image from docker hub.
+Login to MRC instance and using the following commands:
 
 ## Creating instances for webserver and data analyzer
 
