@@ -18,6 +18,12 @@ We created 4 different databases to store differnent for different scenario anal
  - Grunt-couch is used to automatically deploy the design documents for different databases.
  - Mapreduce functions are used to remove repliaction and filter tweets.
 
-## Tiwtter Harvest
+## Twitter Harvest
+We use twitter API to get data:
+  - Stream API
+  - User_timeline API
+  - Search API
 
-## 
+Each twitter harvester has been packaged as a docker image and pushed to dockerhub. 
+
+## Twitter Analysis
