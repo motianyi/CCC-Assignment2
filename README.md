@@ -1,8 +1,7 @@
 # CCC-Assignment2
 ## Overview
-The system deployed on Melbourne Research Cloud (MRC) can be access through link [http://172.26.131.90:8887/](http://172.26.131.90:8887/) (requires VPN to access)
+The system deployed on Melbourne Research Cloud (MRC) can be access through link [http://172.26.131.90:8887/](http://172.26.131.90:8887/) (require VPN to access)
 
-## File Directories
 
 
 ## Usage
@@ -36,5 +35,20 @@ sh ./webserver-deploy.sh
 ```
 All details of deployment of this system can be found at [ansible directory](ansible/README.md).
 ## CouchDB
+We created 4 different databases to store differnent for different scenario analysis.
+  - all_twitter
+  - beer_twitter
+  - covid_twitter
+  - income_twitter 
+ - Grunt-couch is used to automatically deploy the design documents for different databases.
+ - Mapreduce functions are used to remove repliaction and filter tweets.
 
-## Tiwtter Harvest
+## Twitter Harvest
+We use twitter API to get data:
+  - Stream API
+  - User_timeline API
+  - Search API
+
+Each twitter harvester has been packaged as a docker image and pushed to dockerhub. 
+
+## Twitter Analysis
