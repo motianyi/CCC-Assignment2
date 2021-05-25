@@ -94,7 +94,7 @@
     "box0 box0 box0"
     "box1 box2 box3"
     "box4 box5 box6";
-    /* grid-gap: 1em; */
+    grid-gap: 1em;
     grid-auto-rows: minmax(100px, auto);
     justify-content: center;
     align-content: center;

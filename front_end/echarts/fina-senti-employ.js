@@ -39,7 +39,7 @@ var fina_option = {
             type: 'value',
             name: 'Sentiment Score',
             min: 0,
-            max: 1.2,
+            max: 1.5,
             interval: 0.3,
             axisLabel: {
                 formatter: '{value}'

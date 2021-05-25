@@ -1,0 +1,53 @@
+body{
+	margin: 0;
+	padding: 0;
+}
+.header{
+	height: 100vh;
+	background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(../picture/kon-karampelas-b1z-VG_jY64-unsplash.jpg);
+	background-size: cover;
+	background-position: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: sans-serif;
+}
+h1{
+	color: #FFFFFF;
+	margin-bottom: 70px;
+	font-size: 48px;
+	letter-spacing: 2px;
+	text-align: center;
+}
+.btn{
+	height: 50px;
+	width: 150px;
+	background: #ffeb3b;
+	border: none;
+	color: #000;
+	border-radius: 25px;
+	font-size: 18px;
+	font-weight: bold;
+	margin: 20px;
+	float: right;
+}
+.btn:hover {
+	background: #FFC107;
+	cursor: pointer;
+}
+.grid{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+	width: 300px;
+	align-items: center;
+	justify-items: left;
+	margin: 10px;
+	color: #FFFFFF;
+	grid-gap: 1em;
+	font-weight: bold;
+}
+.n1{
+	font-weight: bold;
+	font-size: 24px;
+}

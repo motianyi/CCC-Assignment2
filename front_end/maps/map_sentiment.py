@@ -4,6 +4,7 @@ import folium
 import os
 import numpy as np
 from folium import IFrame
+import json
 
 tooltip = 'click for details'
 
@@ -13,8 +14,6 @@ sentiment = os.path.join('../data', 'cities.csv')
 s_data = pd.read_csv(sentiment, usecols=np.arange(0,6))
 
 m = folium.Map(location=[-35.282001, 149.128998], zoom_start=6)
-
-html = os.path.join('../templates/heal-con.html')
 
 # Create city markers
 df = pd.DataFrame({
