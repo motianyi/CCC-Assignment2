@@ -1,6 +1,8 @@
 # Deployment the system using ansible
 
 The whole sysetem consists of webserver, couchdb database and data harvester. In order to deploy the whole system on the Melbouren Research Cloud (MRC). Before deploy the system, you need to download the OpenStack RC File from the MRC Dashboard and get your user password. This file contains the Environment variables that are necessary to run OpenStack command-line clients.
+- Make sure you have OpenStack RC File and password
+- Make sure you have connected to unimelb network or connect to the VPN 
 
 If you want to create and deploy all parts of the system, you can execute the following command from the ```ansible``` directory. 
 ```bash
@@ -58,7 +60,27 @@ This taks will execute ```db-deploy.yaml``` playbook whick consists of 6 roles. 
     - run“couch-push” script, which pushes the compiled documents to our couchdb database on MRC instances.
 
 ## Deploy twitter harvester
+This taks will execute ```harvester-deploy.yaml``` playbook whick consists of 6 roles. The instances used are load from ```inventory/inventory_file.ini```.
+- deploy-twitter-harvester
+    - Pull the twitter harvester image from docker hub and restart the container
 
 ## Creating instances for webserver and data analyzer
-
+This taks will execute ```webserver-create-instances.yaml``` palybook, similar to "Creating instances for database and harvesters", it will creare volumns, security group and the instace. However, it wil save the ip address in a different file
+-   openstack-volume : 
+-   openstack-security-group
+-   openstack-instance
+-   save-ip: 
+    - The ip address will be automatically saved in ```inventory/inventory_webserver.ini```. The file can be used in subsequent tasks to get the ip address of these instances and perform other operations on them.
+  
 ## Deploy the webserver and data analyzer
+This taks will execute ```webserver-deploy.yaml``` playbook whick consists of 5 roles. The instances used are load from ```inventory/inventory_webserver.ini```.
+- set-up-http-proxy
+- dependency
+- set-up-docker-http-proxy
+- deploy-data-analyzer
+  - Pull the data analyzer image from the docker hub
+  - attach ```/home/ubuntu/data``` directory on virtual machine at ```/code/data``` directory inside the container. This makesure the result of the data analyzer can be used by the web server.
+- deploy-web-server
+  - Pull the web server image form the docker hub
+  - attach ```/home/ubuntu/data``` directory on virtual machine at ```/data``` directory inside the container. It will use the result produced by data analayer and show on the webpage.
+ 
