@@ -16,13 +16,12 @@
   vars_files:
     - host_vars/mrc.yaml
   gather_facts: true
-
   roles:
-    # - role: openstack-common
     - role: deploy-couchDB
 
-- hosts: 172.26.128.223
+- hosts: localhost
   vars_files:
     - host_vars/mrc.yaml
   roles:
     - role: deploy-couchDB-cluster
+    - role: deploy-couchDB-grunt

@@ -6,6 +6,7 @@ $.getJSON('../data/all_senti_analysis.json', function (jsondata) {
     console.log(JSON.stringify(jsondata));
     var city = []
     var value = []
+    var tweets = []
     for (const key in jsondata){
         if(jsondata.hasOwnProperty(key)){
         //   console.log(`${key} : ${res[key]}`)
