@@ -9,7 +9,7 @@ $.getJSON('../data/all_senti_analysis.json', function (jsondata) {
 
     total_score.hideLoading()
 
-    var index = "1"
+    var index = "6"
     var total_score_option = {
         title: {
             text: jsondata[index]["gcc_name16"],
