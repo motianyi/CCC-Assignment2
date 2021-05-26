@@ -52,8 +52,9 @@ We use twitter API to get data:
 Each twitter harvester has been packaged as a docker image and pushed to dockerhub. 
 
 ## Twitter Analysis
-The tiwtter analyzer is running in a docker container on the same MRC instance as webserver.
+The tiwtter analyzer is running in a docker container on the same MRC instance as a webserver.
 The twitter analyzer uses couchDB cURL to communicate with couchDB and processes data to show in the frontend. 
 
 ## Webserver and visualization
 The webserver is depolyed on one MRC instance. It loads data from the twitter analysis and show them in the web.
+
