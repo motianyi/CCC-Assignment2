@@ -7,7 +7,8 @@
 
   roles:
     - role: set-up-http-proxy
-    - role: dependency
+    # - role: dependency
     - role: set-up-docker-http-proxy
+    # - role: deploy-data-analyzer
     - role: deploy-web-server
-    - role: deploy-data-analyzer
+    
